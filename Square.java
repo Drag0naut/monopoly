@@ -1,4 +1,4 @@
 
-public class Square {
+public interface Square {
 
 }
