@@ -1,4 +1,4 @@
 
-public interface Square {
+public abstract Space {
 
 }
