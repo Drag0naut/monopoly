@@ -17,9 +17,9 @@ public class Player {
     int r1 = (int) (Math.random() * 6) + 1;
 		int r2 = (int) (Math.random() * 6) + 1;
     int newPosition = position + r1 + r2;
-		if (newPosition <= 40) {
+		if (newPosition <= 39) {
       position = newPosition;
     } else {
-      position = 40 - newPosition;
+      position = 39 - newPosition;
     }   
   }
