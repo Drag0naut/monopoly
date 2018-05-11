@@ -29,7 +29,7 @@ public static void main(String[] args) {
     mediterraneanAve, balticAve, orientalAve, vermontAve, connecticutAve, stCharlesPlace, statesAve, virginiaAve,
     stJamesPlace, tennesseeAve, newYorkAve, kentuckyAve, indianaAve, illinoisAve, atlanticAve, ventnorAve, marvinGardens,
     pacificAve, northCarolinaAve, pennsylvaniaAve, parkPlace, boardwalk
-  }
+  };
   board = new Board(spaces);
 
 }
