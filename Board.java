@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 public class Board {
 	
-	private ArrayList<Space> spaces;
+	private Space[] spaces;
 	private ChanceCard chance;
 	private CommunityChestCard chest;
 	
-	public Board() {
-		spaces = new ArrayList<Space>();
-			// initialize actual spaces here, then add to ArrayList
-		spaces.add(...)
-			...
+	public Board(Space[] s) {
+		spaces = new Space[40];
+		for (int i = 0; i < s.length; i++) {
+			spaces[i] = s[i];
+		}
 	}
 }
