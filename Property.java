@@ -1,9 +1,9 @@
-public class PropertySpace {
+public class Property {
   
   private int price;
   private int mortgage;
   
-  public PropertySpace(int p, int m) {
+  public Property(int p, int m) {
     price = p;
     mortgage = m;
   }
