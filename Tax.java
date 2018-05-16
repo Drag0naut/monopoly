@@ -7,8 +7,9 @@ public class Tax implements Space {
     tax = t;
   }
   
-  public void act(Player p) {
+  public void act(Player p, FreeParking fp) {
     p.changeMoney(0 - tax);
+    fp.changeMoney(tax);
   }
   
 }
