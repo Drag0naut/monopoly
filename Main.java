@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class Game {
+public class Main {
 	private ArrayList<Player> playerList;
 	private Board board;
 	public Game() {
