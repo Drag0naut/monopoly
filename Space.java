@@ -1,4 +1,4 @@
 
 public interface Space {
-	void act();
+	void act(Player p);
 }
