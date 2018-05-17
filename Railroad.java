@@ -7,7 +7,8 @@ public class Railroad implements Space {
   private static int numOwned;
   private int price;
   private int rent;
-  private int mortgageCost;
+  private int mortgageAmt;
+  private boolean canCollectRent;
   
   public Railroad(String n) {
     name = n;
@@ -21,12 +22,14 @@ public class Railroad implements Space {
   
   public void act(Player p) {
     if (owner.equals("")) {
-      if (p.askToBuy(getName())) {
-        numOwned++;
-        rent *= numOwned;
+        if (p.askToBuy(getName())) {
+          numOwned++;
+          rent *= numOwned;
+        }
+    } else if (canCollectRent) {
+       if (!owner.equals(p.getName())) {
+        p.changeMoney(0 - rent);
       }
-    } else if (!owner.equals(p.getName())) {
-      p.changeMoney(0 - rent);
     }
   }
   
@@ -42,8 +45,16 @@ public class Railroad implements Space {
     return rent;
   }
   
-  public int getMortgageCost() {
-    return mortgageCost;
+  public int getMortgageAmt() {
+    return mortgageAmt;
+  }
+  
+  public void changeMortgageState() {
+    if (isMortgaged) {
+      isMortgaged = false;
+      p.changeMoney(0 - Math.round(mortgageAmt * 0.1));
+    } else {
+      p.changeMoney(mortgageAmt);
   }
 
 }
