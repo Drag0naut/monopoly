@@ -38,7 +38,7 @@ public class Player {
     jailTurns = 3;
   }
   
-  public void changeNumGetOutCards() {
+  public void drawGetOutCard() {
     if (numGetOutCards < 2) {
       numGetOutCards++;
     }
