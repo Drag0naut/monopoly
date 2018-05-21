@@ -1,9 +1,11 @@
 
 public class Tax implements Space {
   
+  private int position;
   private int tax;
   
-  public Tax(int t) {
+  public Tax(int p, int t) {
+    position = p;
     tax = t;
   }
   
