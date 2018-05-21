@@ -28,6 +28,10 @@ public class Player {
   public int getMoney() {
     return money;
   }
+	
+	public int getHouses() {
+		return numHouses;
+	}
   
   public void changeMoney(int amt) {
     money += amt;
