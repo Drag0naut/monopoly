@@ -47,6 +47,10 @@ public int getHouses() {
     isInJail = true;
     jailTurns = 3;
   }
+	
+public boolean isInJail() {
+	return isInJail;
+}
   
   public void drawGetOutCard() {
     if (numGetOutCards < 2) {
