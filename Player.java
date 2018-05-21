@@ -4,6 +4,7 @@ public class Player {
   private String name;
   private int money;
   private int numHouses;
+  private int numHotels;
   private boolean isInJail;
   private int jailTurns;
   private int numGetOutCards;
@@ -29,9 +30,14 @@ public class Player {
     return money;
   }
 	
-	public int getHouses() {
-		return numHouses;
-	}
+public int getHouses() {
+        return numHouses;
+}
+        
+  public int getHotels() 
+  {
+      return numHotels;
+  }
   
   public void changeMoney(int amt) {
     money += amt;
