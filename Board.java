@@ -2,9 +2,9 @@ import java.util.ArrayList;
 public class Board {
 	private static final int MAX_HOUSES = 32;
 	private static final int MAX_HOTELS = 12;
-	private ArrayList<Square> squares;
+	private ArrayList<Space> spaces;
 	public Board()
 	{
-		squares = new ArrayList<Square>();
+		spaces = new ArrayList<Space>(); // will need to add each individually
 	}
 }
