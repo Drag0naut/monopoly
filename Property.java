@@ -1,10 +1,12 @@
 
 public class Property implements Square{
+	private int position;
 	private String name;
 	private String owner;
 	private boolean isMortgaged;
 	private int numHouses;
 	private String color;
+	private int price;
 	private int rent;
 	private final int RENT_ORIGINAL;
 	private final int RENT_MONOPOLY;
@@ -13,13 +15,18 @@ public class Property implements Square{
 	private final int RENT_THREEHOUSE;
 	private final int RENT_FOURHOUSE;
 	private final int RENT_HOTEL;
-	public Property(String n, String col, int rOrig, int rMono, int rOne, int rTwo, int rThree, int rFour, int rHotel)
+	private int houseCost;
+	private int mortgageAmt;
+	
+	public Property(int p, String n, String col, int pr, int rOrig, int rMono, int rOne, int rTwo, int rThree, int rFour, int rHotel, int hC, int mA)
 	{
+		position = p;
 		name = n;
 		owner = "";
 		isMortgaged = false;
 		numHouses = 0;
 		color = c;
+		price = pr;
 		rent = rOrig;
 		RENT_ORIGINAL = rOrig;
 		RENT_MONOPOLY = rMono;
@@ -27,7 +34,9 @@ public class Property implements Square{
 		RENT_TWOHOUSE = rTwo;
 		RENT_THREEHOUSE = rThree;
 		RENT_FOURHOUSE = rFour;
-		RENT_HOTEL = rHotel;	
+		RENT_HOTEL = rHotel;
+		houseCost = hC;
+		mortgageAmt = mA;
 	}
 	public void setOwner()
 	{
