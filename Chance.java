@@ -3,7 +3,7 @@ public class Chance implements Space {
         int ran = (int) Math.random() * 16;
         if (ran == 0)
         {
-            p.goTo(Go); // go to  go space
+            p.goTo(0); // go to  go space
         }
         if (ran == 1)
         {
