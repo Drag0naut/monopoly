@@ -1,6 +1,7 @@
 
 public class Railroad implements Space {
   
+  private int position;
   private String name;
   private String owner;
   private boolean isMortgaged;
@@ -9,7 +10,8 @@ public class Railroad implements Space {
   private int rent;
   private int mortgageCost;
   
-  public Railroad(String n) {
+  public Railroad(int p, String n) {
+    position = p;
     name = n;
     owner = "";
     isMortgaged = false;
