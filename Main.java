@@ -6,4 +6,7 @@ public class Main {
 		playerList = new ArrayList<Player>();
 		board = new Board(); //need to have static input for all properties
 	}
+	public ArrayList<Player> getPlayerList() {
+		return playerList;	
+	}
 }
