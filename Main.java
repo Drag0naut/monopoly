@@ -8,7 +8,7 @@ public class Main {
                 Board board = new Board();
                 Space[] spaces = new Space[40];
                 //space position starts at go = 0
-                Space go = new Go();
+                Space go = new Go(1);
                 Space mediterraneanAve = new PropertySpace(1, 60, 2, 10, 30, 90, 160, 250, 50, 30);
                 Space commChest1 = new CommunityChest(2);
                 Space balticAve = new PropertySpace(3, 60, 4, 20, 60, 180, 320, 450, 50, 30);
