@@ -11,6 +11,7 @@ public class Player {
   private int position;
   private boolean isTurn;
   private int doublesCount;
+  private int railroadCount;
   
   public Player(String n) {
     name = n;
@@ -97,5 +98,9 @@ public class Player {
     isTurn = !isTurn;
     doublesCount = 0;
   }
+  
+  public void addRailroad() {railroadCount++;}
+  public void removeRailroad() {railroadCount--;}
+  public int getRailroad() {return railroadCount;}
   
 }
