@@ -1,9 +1,10 @@
 
 public class FreeParking implements Space {
-
+  private int position;
   private static int money;
   
-  public FreeParking() {
+  public FreeParking(pos) {
+    position = pos;
     money = 100;
   }
   
