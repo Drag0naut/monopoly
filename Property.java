@@ -75,6 +75,7 @@ public class Property implements Space{
 				}
 				// case for n
 			}
+			in.close();
 		}
 		else if (!(p == owner) && !isMortgaged)
 		{
