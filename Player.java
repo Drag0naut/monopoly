@@ -10,6 +10,7 @@ public class Player {
   private int numGetOutCards;
   private int position;
   private boolean isTurn;
+  private int doublesCount;
   
   public Player(String n) {
     name = n;
@@ -31,9 +32,9 @@ public class Player {
     return money;
   }
 	
-public int getHouses() {
-        return numHouses;
-}
+  public int getHouses() {
+  	return numHouses;
+  }
         
   public int getHotels() 
   {
@@ -46,12 +47,13 @@ public int getHouses() {
   
   public void goToJail() {
     isInJail = true;
-    jailTurns = 3;
+    goTo(10);
+    jailTurns = 0;
   }
 	
-public boolean isInJail() {
-	return isInJail;
-}
+  public boolean isInJail() {
+	 return isInJail;
+  }
   
   public void drawGetOutCard() {
     if (numGetOutCards < 2) {
@@ -73,11 +75,14 @@ public boolean isInJail() {
   {
 	  int i = (int) Math.random() * 6;
 	  int j = (int) Math.random() * 6;
+	  System.out.println("Rolled a " + i + " and a " + j);
+	  if (i == j) {doublesCount++;}
 	  return i + j;
   }
   public void move() {
 	  int r = getRoll();
-	  if (location + r > 40)
+	  if (doublesCount == 3) {goToJail();}
+	  else if (location + r > 40)
 	  {
 		  goTo((location + r) % 40);
 		  changeMoney(200);
@@ -90,6 +95,7 @@ public boolean isInJail() {
   
   public void changeTurn() {
     isTurn = !isTurn;
+    doublesCount = 0;
   }
   
 }
