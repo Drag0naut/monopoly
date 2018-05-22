@@ -1,7 +1,7 @@
-
 public class Player {
 
   private String name;
+  private int location;
   private int money;
   private int numHouses;
   private int numHotels;
@@ -9,10 +9,11 @@ public class Player {
   private int jailTurns;
   private int numGetOutCards;
   private int position;
-  private int isTurn;
+  private boolean isTurn;
   
   public Player(String n) {
     name = n;
+    location = 0;
     money = 1500;
     numHouses = 0;
     isInJail = false;
@@ -58,8 +59,33 @@ public boolean isInJail() {
     }
   }
   
+  public int getPos()
+  {
+	  return location;
+  }
+  
+  public void goTo(int n)
+  {
+	  location = n;
+  }
+  
+  public int getRoll()
+  {
+	  int i = (int) Math.random() * 6;
+	  int j = (int) Math.random() * 6;
+	  return i + j;
+  }
   public void move() {
-    ... //roll dice, change position
+	  int r = getRoll();
+	  if (location + r > 40)
+	  {
+		  goTo((location + r) % 40);
+		  changeMoney(200);
+	  }
+	  else
+	  {
+		  goTo(location + r);
+	  }
   }
   
   public void changeTurn() {
