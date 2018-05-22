@@ -1,16 +1,44 @@
-
+import java.util.Scanner;
 public class Utilities implements Space{
+	private int position;
+	private Player owner;
+	private boolean isMortgaged;
+	public Utilities(int pos)
+	{
+		position = pos;
+		isMortgaged = false;
+	}
 	public void act(Player p)
 	{
-		if (this.getOwner().getUtilities() == 2)
+		if (owner == null)
 		{
-			p.changeMoney(0 - p.getRoll() * 10);
-			this.getOwner().changeMoney(p.getRoll() * 10);
+			Scanner in = new Scanner(System.in);
+			System.out.println("Purchase property? y/n");
+			String ans = in.next();
+			boolean found = false;
+			while (!found)
+			{
+				if (ans.equals("y"))
+				{
+					owner = p;
+					found = true;
+				}
+				// case for n
+			}
+			in.close();
 		}
-		else
+		else if (!(p == owner) && !isMortgaged)
 		{
-			p.changeMoney(0 - p.getRoll() * 4);
-			this.getOwner().changeMoney(p.getRoll() * 4);
-		}
+			if (owner.getUtilities() == 2)
+			{
+				p.changeMoney(0 - p.prevRoll() * 10);
+				owner.changeMoney(p.prevRoll() * 10);
+			}
+			else
+			{
+				p.changeMoney(0 - p.prevRoll() * 4);
+				owner.changeMoney(p.prevRoll() * 4);
+			}
+		}	
 	}
 }
