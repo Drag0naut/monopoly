@@ -12,6 +12,7 @@ public class Player {
   private boolean isTurn;
   private int doublesCount;
   private int railroadCount;
+  private int pastRoll;
   
   public Player(String n) {
     name = n;
@@ -78,7 +79,12 @@ public class Player {
 	  int j = (int) Math.random() * 6;
 	  System.out.println("Rolled a " + i + " and a " + j);
 	  if (i == j) {doublesCount++;}
-	  return i + j;
+	  pastRoll = i+j;
+	  return pastRoll;
+  }
+  public int prevRoll()
+  {
+	  return pastRoll;
   }
   public void move() {
 	  int r = getRoll();
