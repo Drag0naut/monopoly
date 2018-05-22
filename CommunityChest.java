@@ -1,5 +1,5 @@
 
-public class CommunityChest {
+public class CommunityChest implements Space{
     public CommunityChest(
     public void act(Player p) {
         int ran = (int) Math.random() * 15;
