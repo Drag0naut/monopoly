@@ -7,29 +7,33 @@ public class Chance implements Space {
         }
         if (ran == 1)
         {
-            p.goTo(x); //x = illinoisave, go to  Illinois Ave.
+            p.goTo(24); //x = illinoisave, go to  Illinois Ave.
         }
         if (ran == 2)
         {
-            p.goTo(x); // x = stcharlesplace, go to st charles place
+            p.goTo(11); // x = stcharlesplace, go to st charles place
         }
         if (ran == 3)
         {
         	//implement the roll
-            if (p.getPos() < x || p.getPos() > y) // x = pos of first util, y = pos of last util
+            if (p.getPos() < 12 || p.getPos() > 28) // x = pos of first util, y = pos of last util
             {
-            	p.move(x);
+            	p.goTo(12);
             }
             else
             {
-            	p.move(y);
+            	p.goTo(28);
             }
-            	
             	// go to  closest utility,  if owned, pay ten  times dice roll
         }
         if (ran == 4)
         {
-            // go to closest railroad,  pay twice as  much as you  normally would
+            if (p.getPos() < 5) {p.goTo(5); p.goTo(5);}
+            else if (p.getPos() < 15) {p.goTo(15); p.goTo(15);}
+            else if (p.getPos() < 25) {p.goTo(25); p.goTo(25);}
+            else if (p.getPos() < 25) {p.goTo(35); p.goTo(35);}
+            else {p.move(5); p.move(5);}
+            //NEED TO PAY TWICE AS MUCH RENT
         }
         if (ran == 5)
         {
@@ -41,11 +45,11 @@ public class Chance implements Space {
         }
         if (ran == 7)
         {
-            p.move(p.getPos() - 3);// go back  3 spaces
+            p.goTo(p.getPos() - 3);// go back  3 spaces
         }
         if (ran == 8)
         {
-            p.move();// go  to jail
+            p.goTo();// go  to jail
         }
         if (ran == 9)
         {
@@ -60,14 +64,14 @@ public class Chance implements Space {
         }
         if (ran == 11)
         {
-        	int i = ; // whatever reading railroad is in the array
-        	if (p.getPos()) > i) {p.changeMoney(200);}
-            p.move(i); //go to reading railroad, if pass go,  collect 200
+        	int i = 5; // whatever reading railroad is in the array
+        	if (p.getPos() > 5) {p.changeMoney(200);}
+            p.goTo(5); //go to reading railroad, if pass go,  collect 200
         }
         
         if (ran == 12)
         {
-            p.move(); // go  to  boardwalk
+            p.goTo(39); // go  to  boardwalk
         }
         if (ran == 13)
         {
@@ -87,5 +91,5 @@ public class Chance implements Space {
         {
             p.changeMoney(100);//collect $100
         }
-        
-    }
+    }  
+}
