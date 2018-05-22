@@ -1,5 +1,5 @@
 
-public class Utilities {
+public class Utilities implements Space{
 	public void act(Player p)
 	{
 		if (this.getOwner().getUtilities() == 2)
