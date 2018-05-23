@@ -1,14 +1,16 @@
 import java.util.Scanner;
 public class Utilities implements Space {
+	private String name;
 	private int position;
 	private Player owner;
 	private boolean isMortgaged;
 	public static final int MORTGAGE = 75;
 	public static final int COST = 150;
-	public Utilities(int pos)
+	public Utilities(int pos, String call)
 	{
 		position = pos;
 		isMortgaged = false;
+		name = call;
 	}
 	public void act(Player p)
 	{
