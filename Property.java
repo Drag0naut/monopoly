@@ -5,8 +5,8 @@ public class Property implements Space{
 	private Player owner;
 	private boolean isMortgaged;
 	private int numHouses;
-	private String color;
-	private int price;
+	private final String color;
+	private final int price;
 	private final int RENT_ORIGINAL;
 	private final int RENT_MONOPOLY;
 	private final int RENT_ONEHOUSE;
@@ -14,9 +14,8 @@ public class Property implements Space{
 	private final int RENT_THREEHOUSE;
 	private final int RENT_FOURHOUSE;
 	private final int RENT_HOTEL;
-	private int houseCost;
-	private int houseCount;
-	private int mortgageAmt;
+	private final int HOUSE_COST;
+	private final int MORTGAGE;
 	
 	public Property(int p, String n, String col, int pr, int rOrig, int rMono, int rOne, int rTwo, int rThree, int rFour, int rHotel, int hC, int mA)
 	{
@@ -34,22 +33,30 @@ public class Property implements Space{
 		RENT_THREEHOUSE = rThree;
 		RENT_FOURHOUSE = rFour;
 		RENT_HOTEL = rHotel;
-		houseCost = hC;
-		mortgageAmt = mA;
+		HOUSE_COST = hC;
+		MORTGAGE = mA;
 	}
 	public void setOwner()
 	{
 
 	}
-	public void changeMortgageState()
+	public void mortgage()
 	{
-		if (isMortgaged) {
-			isMortgaged = false;
-		}
-		else {
+		if (!isMortgaged)
+		{
 			isMortgaged = true;
+			owner.changeMoney(MORTGAGE);
 		}
 	}
+	public void unmortgage()
+	{
+		if (isMortgaged)
+		{
+			isMortgaged = false;
+			owner.changeMoney(0 - (int) (MORTGAGE * 1.1));
+		}
+	}
+	
 	public void addHouses()
 	{
 		numHouses++;
@@ -79,33 +86,33 @@ public class Property implements Space{
 		}
 		else if (!(p == owner) && !isMortgaged)
 		{
-			if (houseCount == 0) 
+			if (numHouses == 0) 
 			{
 				p.changeMoney(0 - RENT_ORIGINAL);
 				owner.changeMoney(RENT_ORIGINAL);
 			}
 			//need case for monopoly, but no houses
-			if (houseCount == 1) 
+			if (numHouses == 1) 
 			{
 				p.changeMoney(0 - RENT_ONEHOUSE);
 				owner.changeMoney(RENT_ONEHOUSE);
 			}
-			if (houseCount == 2) 
+			if (numHouses == 2) 
 			{
 				p.changeMoney(0 - RENT_TWOHOUSE);
 				owner.changeMoney(RENT_TWOHOUSE);
 			}
-			if (houseCount == 3) 
+			if (numHouses == 3) 
 			{
 				p.changeMoney(0 - RENT_THREEHOUSE);
 				owner.changeMoney(RENT_THREEHOUSE);
 			}
-			if (houseCount == 4) 
+			if (numHouses == 4) 
 			{
 				p.changeMoney(0 - RENT_FOURHOUSE);
 				owner.changeMoney(RENT_FOURHOUSE);
 			}
-			if (houseCount == 5) 
+			if (numHouses == 5) 
 			{
 				p.changeMoney(0 - RENT_HOTEL);
 				owner.changeMoney(RENT_HOTEL);
