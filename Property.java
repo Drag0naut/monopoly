@@ -84,6 +84,7 @@ public class Property implements Space{
 				{
 					owner = p;
 					found = true;
+					p.changeMoney(0 - price);
 				}
 				// case for n
 			}
