@@ -5,18 +5,14 @@ public class Railroad implements Space {
   private String name;
   private Player owner;
   private boolean isMortgaged;
-  private int price;
-  private int rent;
-  private int mortgageCost;
+  private static final int MORTGAGE = 100;
+  private static final int COST = 200;
   
   public Railroad(int p, String n) {
     position = p;
     name = n;
     owner = null;
     isMortgaged = false;
-    price = 200;
-    rent = 25;
-    mortgageCost = 100;
   }
   
   public void act(Player p) {
@@ -67,16 +63,21 @@ public class Railroad implements Space {
     return name;
   }
   
-  public int getPrice() {
-    return price;
+  public void mortgage()
+  {
+	  if (!isMortgaged)
+	  {
+		  isMortgaged = true;
+		  owner.changeMoney(MORTGAGE);
+	  }
   }
-  
-  public int getRent() {
-    return rent;
-  }
-  
-  public int getMortgageCost() {
-    return mortgageCost;
+  public void unmortgage()
+  {
+	  if (isMortgaged)
+	  {
+		  isMortgaged = false;
+		  owner.changeMoney(0 - (int) (MORTGAGE * 1.1));
+	  }
   }
 
 }
