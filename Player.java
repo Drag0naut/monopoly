@@ -13,6 +13,7 @@ public class Player {
   private int doublesCount;
   private int railroadCount;
   private int pastRoll;
+  private int utilitiesCount;
   
   public Player(String n) {
     name = n;
@@ -109,5 +110,8 @@ public class Player {
   public void addRailroad() {railroadCount++;}
   public void removeRailroad() {railroadCount--;}
   public int getRailroad() {return railroadCount;}
+  public void addUtility() {utilitiesCount++;}
+  public void removeUtility() {utilitiesCount--;}
+  public int getUtilities() {return utilitiesCount;}
   
 }
