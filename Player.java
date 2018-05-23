@@ -68,11 +68,21 @@ public class Player {
   {
 	  return location;
   }
+  public void justMove(int i)
+  {
+	  location = i;
+  }
   
   public void goTo(int n)
   {
 	  location = n;
 	  spaces[location].act(this);
+  }
+  public int justRoll()
+  {
+	  int i = (int) Math.random() * 6;
+	  int j = (int) Math.random() * 6;
+	  return i+j;
   }
   
   public int getRoll()
