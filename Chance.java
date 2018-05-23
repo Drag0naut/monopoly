@@ -15,14 +15,25 @@ public class Chance implements Space {
         }
         if (ran == 3)
         {
-        	//implement the roll
             if (p.getPos() < 12 || p.getPos() > 28) // x = pos of first util, y = pos of last util
             {
-            	p.goTo(12);
+            	p.justMove(12);
+            	if (spaces[12].getOwner() != null && spaces[12].getOwner() != p)
+            	{
+            		int i = p.justRoll();
+            		p.changeMoney(0 - i * 10);
+            		spaces[12].getOwner().changeMoney(i * 10);
+            	}
             }
             else
             {
-            	p.goTo(28);
+            	p.justMove(28);
+            	if (spaces[28].getOwner() != null && spaces[28].getOwner() != p)
+            	{
+            		int i = p.justRoll();
+            		p.changeMoney(0 - i * 10);
+            		spaces[28].getOwner().changeMoney(i * 10);
+            	}
             }
             	// go to  closest utility,  if owned, pay ten  times dice roll
         }
@@ -33,7 +44,6 @@ public class Chance implements Space {
             else if (p.getPos() < 25) {p.goTo(25); p.goTo(25);}
             else if (p.getPos() < 25) {p.goTo(35); p.goTo(35);}
             else {p.move(5); p.move(5);}
-            //NEED TO PAY TWICE AS MUCH RENT
         }
         if (ran == 5)
         {
@@ -41,7 +51,7 @@ public class Chance implements Space {
         }
         if (ran == 6)
         {
-            p.addGetOutOfJailFreeCard();//get out of jail  free card
+            p.drawGetOutCard();//get out of jail  free card
         }
         if (ran == 7)
         {
@@ -49,7 +59,7 @@ public class Chance implements Space {
         }
         if (ran == 8)
         {
-            p.goTo();// go  to jail
+            p.goToJail();// go  to jail
         }
         if (ran == 9)
         {
@@ -64,7 +74,6 @@ public class Chance implements Space {
         }
         if (ran == 11)
         {
-        	int i = 5; // whatever reading railroad is in the array
         	if (p.getPos() > 5) {p.changeMoney(200);}
             p.goTo(5); //go to reading railroad, if pass go,  collect 200
         }
