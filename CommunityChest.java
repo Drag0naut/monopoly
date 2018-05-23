@@ -13,7 +13,7 @@ public class CommunityChest implements Space{
         }
         if (ran == 2)
         {
-          p.changeMoney(-50); //Doctor's fees {fee} – Pay $50 
+          p.changeMoney(0-50); //Doctor's fees {fee} – Pay $50 
         }
         if (ran == 3)
         {
@@ -30,7 +30,6 @@ public class CommunityChest implements Space{
         if (ran == 6)
         {
           p.changeMoney(100); //Holiday {Xmas} Fund matures - Receive {Collect} $100 <Mr. M carries along a giant Xmas sock containing a sheaf of cash>
-
         }
         if (ran == 7)
         {
@@ -44,18 +43,18 @@ public class CommunityChest implements Space{
         }
         if (ran == 9)
         {
-          p.changeMoney(-40*p.getHouses());
-          p.changeMoney(-115*p.getHotels());
+          p.changeMoney(0-40*p.getHouses());
+          p.changeMoney(0-115*p.getHotels());
           //You are assessed for street repairs – $40 per house – $115 per hotel <Mr. M., supported by his near-ubiquitous cane in his left hand, holds a pick and shovel over his right shoulder>
 
         }
         if (ran == 10)
         {
-          p.changeMoney(-100); //Pay hospital fees of $100 {Pay hospital $100} <A bored nurse holds out her hand for payment while Mr. M holds 2 swaddled infants, one in each arm>
+          p.changeMoney(0-100); //Pay hospital fees of $100 {Pay hospital $100} <A bored nurse holds out her hand for payment while Mr. M holds 2 swaddled infants, one in each arm>
         }
         if (ran == 11)
         {
-          p.changeMoney(-150);       //Pay school fees {tax} of $150 <A bespectacled schoolboy unhappily receives a head pat and a dime ((Rockefeller style) from Mr. M.>
+          p.changeMoney(0-150);       //Pay school fees {tax} of $150 <A bespectacled schoolboy unhappily receives a head pat and a dime ((Rockefeller style) from Mr. M.>
         }
         
         if (ran == 12)
