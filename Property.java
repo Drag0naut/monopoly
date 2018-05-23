@@ -36,10 +36,7 @@ public class Property implements Space{
 		HOUSE_COST = hC;
 		MORTGAGE = mA;
 	}
-	public void setOwner()
-	{
-
-	}
+	
 	public void mortgage()
 	{
 		if (!isMortgaged)
@@ -57,13 +54,21 @@ public class Property implements Space{
 		}
 	}
 	
-	public void addHouses()
+	public void addHouse()
 	{
-		numHouses++;
+		if (numHouses < 5)
+		{
+			numHouses++;
+			owner.changeMoney(0 - HOUSE_COST);
+		}
 	}
-	public void removeHouses()
+	public void removeHouse()
 	{
-		numHouses--;
+		if (numHouses >= 0)
+		{
+			numHouses--;
+			owner.changeMoney(HOUSE_COST / 2);
+		}
 	}
 	public void act(Player p)
 	{
