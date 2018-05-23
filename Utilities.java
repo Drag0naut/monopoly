@@ -1,8 +1,9 @@
 import java.util.Scanner;
-public class Utilities implements Space{
+public class Utilities implements Space {
 	private int position;
 	private Player owner;
 	private boolean isMortgaged;
+	public static final int MORTGAGE = 75;
 	public Utilities(int pos)
 	{
 		position = pos;
@@ -41,5 +42,21 @@ public class Utilities implements Space{
 				owner.changeMoney(p.prevRoll() * 4);
 			}
 		}	
+	}
+	public void mortgage()
+	{
+		if (!isMortgaged)
+		{
+			isMortgaged = true;
+			owner.changeMoney(MORTGAGE);
+		}
+	}
+	public void unmortgage()
+	{
+		if (isMortgaged)
+		{
+			isMortgaged = false;
+			owner.changeMoney(0 - (int) (MORTGAGE * 1.1));
+		}
 	}
 }
