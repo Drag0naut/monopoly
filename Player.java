@@ -91,7 +91,7 @@ public class Player {
   public void move() {
 	  int r = getRoll();
 	  if (doublesCount == 3) {goToJail();}
-	  else if (location + r > 40)
+	  else if (location + r >= 40)
 	  {
 		  goTo((location + r) % 40);
 		  changeMoney(200);
