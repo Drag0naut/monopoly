@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Player {
 
   private String name;
@@ -6,9 +7,9 @@ public class Player {
   private int numHouses;
   private int numHotels;
   private boolean isInJail;
+  private boolean pastDouble;
   private int jailTurns;
   private int numGetOutCards;
-  private int position;
   private boolean isTurn;
   private int doublesCount;
   private int railroadCount;
@@ -23,7 +24,6 @@ public class Player {
     isInJail = false;
     jailTurns = 0;
     numGetOutCards = 0;
-    position = 0;
     isTurn = false;
   }
   
@@ -80,7 +80,12 @@ public class Player {
 	  int i = (int) Math.random() * 6;
 	  int j = (int) Math.random() * 6;
 	  System.out.println("Rolled a " + i + " and a " + j);
-	  if (i == j) {doublesCount++;}
+	  if (i == j) 
+	  {
+		  doublesCount++;
+		  pastDouble = true;
+	  }
+	  else {pastDouble = false;}
 	  pastRoll = i+j;
 	  return pastRoll;
   }
@@ -89,6 +94,45 @@ public class Player {
 	  return pastRoll;
   }
   public void move() {
+	  if (isInJail)
+	  {
+		  if (jailTurns == 3)
+		  {
+			  isInJail = false;
+			  this.changeMoney(0 - 50);
+			  move();
+		  }
+		  else
+		  {
+			  Scanner in = new Scanner(System.in);
+			  System.out.println("Pay $50 fine (1) or roll for doubles (2)?");
+			  String ans = in.next();
+			  boolean found = false;
+			  while (!found)
+			  {
+				  if (ans.equals("1"))
+				  {
+					  found = true;
+					  isInJail = false;
+					  this.changeMoney(0 - 50);
+					  move();
+				  }
+				  else if (ans.equals("2"))
+				  {
+					  found = true;
+					  int roll = getRoll();
+					  if (pastDouble == true)
+					  {
+						  isInJail = false;
+						  goTo(10 + roll);
+					  }
+					  else {jailTurns++;}
+				  }
+			  }
+			  in.close();
+		  }
+	  }
+	  
 	  int r = getRoll();
 	  if (doublesCount == 3) {goToJail();}
 	  else if (location + r >= 40)
@@ -100,9 +144,10 @@ public class Player {
 	  {
 		  goTo(location + r);
 	  }
+	  if (pastDouble == true) {move();}
   }
   
-  public void changeTurn() {
+  public void changeTurn() { //need to trigger this when ending turn.
     isTurn = !isTurn;
     doublesCount = 0;
   }
