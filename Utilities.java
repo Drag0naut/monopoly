@@ -22,6 +22,7 @@ public class Utilities implements Space{
 				{
 					owner = p;
 					found = true;
+					owner.addUtility();
 				}
 				// case for n
 			}
