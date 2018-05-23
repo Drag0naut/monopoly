@@ -4,6 +4,7 @@ public class Utilities implements Space {
 	private Player owner;
 	private boolean isMortgaged;
 	public static final int MORTGAGE = 75;
+	public static final int COST = 150;
 	public Utilities(int pos)
 	{
 		position = pos;
@@ -21,8 +22,9 @@ public class Utilities implements Space {
 			{
 				if (ans.equals("y"))
 				{
-					owner = p;
 					found = true;
+					owner = p;
+					owner.changeMoney(0 - COST);
 					owner.addUtility();
 				}
 				// case for n
