@@ -73,7 +73,7 @@ public class Main {
                 while (gameOn) {
                         for (Player player : playerList) {
                                 if (!player.isInJail()) {
-                                        player.move();
+                                        player.move(); // move returns an int now
                                 }
                         }
                 }
