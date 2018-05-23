@@ -12,6 +12,10 @@ public class Utilities implements Space {
 		isMortgaged = false;
 		name = call;
 	}
+	public Player getOwner()
+	{
+		return owner;
+	}
 	public void act(Player p)
 	{
 		if (owner == null)
