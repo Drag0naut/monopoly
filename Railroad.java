@@ -5,7 +5,6 @@ public class Railroad implements Space {
   private String name;
   private Player owner;
   private boolean isMortgaged;
-  private static int numOwned;
   private int price;
   private int rent;
   private int mortgageCost;
@@ -15,7 +14,6 @@ public class Railroad implements Space {
     name = n;
     owner = null;
     isMortgaged = false;
-    numOwned = 0;
     price = 200;
     rent = 25;
     mortgageCost = 100;
