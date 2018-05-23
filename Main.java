@@ -74,7 +74,6 @@ public class Main {
                         for (Player player : playerList) {
                                 if (!player.isInJail()) {
                                         player.move();
-                                        spaces[player.getPosition()].act(player);
                                 }
                         }
                 }
