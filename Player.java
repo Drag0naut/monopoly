@@ -71,6 +71,7 @@ public class Player {
   public void goTo(int n)
   {
 	  location = n;
+	  spaces[location].act(this);
   }
   
   public int getRoll()
