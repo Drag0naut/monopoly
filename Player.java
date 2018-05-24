@@ -54,12 +54,12 @@ public class Player {
 				else
 				{
 					Scanner in = new Scanner(System.in);
-					System.out.println("Pay $50 fine / Use Get Out oF Jail Free Card (1) or roll for doubles (2)?");
-					String ans = in.next();
+					System.out.println("Pay $50 fine / Use Get Out oF Jail Free Card (y) or roll for doubles (n)?");
 					boolean found = false;
 					while(!found)
 					{
-						if (ans.equals("1"))
+						String ans = in.next();
+						if (ans.equals("y"))
 						{
 							found = true;
 							isInJail = false;
@@ -67,7 +67,7 @@ public class Player {
 							else {this.changeMoney(0 - 50);}
 							turn();
 						}
-						else if (ans.equals("2"))
+						else if (ans.equals("n"))
 						{
 							found = true;
 							int x = (int) Math.random() * 6 + 1;
@@ -99,7 +99,7 @@ public class Player {
 				done = true;
 			}
 			lastRoll = i + j;
-			System.out.println(this.getName() + " has rolled a " + lastRoll);
+			System.out.println(this.getName() + " has rolled a " + i + " and " + j + ", which totals " + lastRoll);
 			if (location + i + j >= 40)
 			{	
 				int pos = (location + i + j) % 40;
@@ -138,15 +138,16 @@ public class Player {
 	}
 	public boolean hasMonopoly(String color)
 	{
-		ArrayList<Space> spaces = Board.getSpaces();
 		int colorCount = 0;
 		int ownedCount = 0;
-		for (int i = 0; i < spaces.size(); i++)
+		for (int i = 0; i < 40; i++)
 		{
-			if (spaces.get(i).getColor().equals(color))
+			String propColor = Board.getSpaces().get(i).getColor();
+			Player owner = Board.getSpaces().get(i).getOwner();
+			if (propColor != null && propColor.equals(color))
 			{
 				colorCount++;
-				if (spaces.get(i).getOwner().equals(this))
+				if (owner != null && owner.equals(this))
 				{
 					ownedCount++;
 				}
