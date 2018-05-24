@@ -1,3 +1,3 @@
 # monopoly
 its monopoly
-monopoly is pretty damn hard
+/n monopoly is pretty damn hard
