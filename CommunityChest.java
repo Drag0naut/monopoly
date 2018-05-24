@@ -1,19 +1,32 @@
+import java.util.ArrayList;
 
-public class CommunityChest implements Space{
-    public CommunityChest(
-    public void act(Player p) {
-        int ran = (int) Math.random() * 15;
+public class CommunityChest implements Space {
+	public CommunityChest()
+	{
+		
+	}
+	public String getColor()
+	{
+		return null;
+	}
+	public Player getOwner()
+	{
+		return null;
+	}
+	public void act(Player p)
+	{
+		int ran = (int) Math.random() * 15;
         if (ran == 0)
         {
-          p.goTo(Go); // Player advances to go, collects $200
+          p.moveTo(0); // Player advances to go, collects $200
         }
         if (ran == 1)
         {
-          p.changeMoney(200); // Bank error in your favor â€“ Collect $200 
+          p.changeMoney(200); // Bank error in your favor – Collect $200 
         }
         if (ran == 2)
         {
-          p.changeMoney(0-50); //Doctor's fees {fee} â€“ Pay $50 
+          p.changeMoney(0-50); //Doctor's fees {fee} – Pay $50 
         }
         if (ran == 3)
         {
@@ -25,7 +38,13 @@ public class CommunityChest implements Space{
         }
         if (ran == 5)
         {
-           //Grand Opera Night {Opening} â€“ Collect $50 from every player for opening night seats
+        	p.changeMoney(150);
+        	ArrayList<Player> temp = Board.getPlayers();
+            for (int i = 0; i < temp.size(); i++)
+            {
+            	if (!(temp.get(i).equals(p))) {temp.get(i).changeMoney(0 - 50);}
+            }
+           // what happens when someones bankrupt, Grand Opera Night {Opening} – Collect $50 from every player for opening night seats
         }
         if (ran == 6)
         {
@@ -33,19 +52,19 @@ public class CommunityChest implements Space{
         }
         if (ran == 7)
         {
-          p.changeMoney(20); //Income tax refund â€“ Collect $20 <Mr M faints back against a man displaying the Refund paper>
+          p.changeMoney(20); //Income tax refund – Collect $20 <Mr M faints back against a man displaying the Refund paper>
 
         }
         if (ran == 8)
         {
-          p.changeMoney(100); //Life insurance matures â€“ Collect $100 <Below an I N S sign stands a bent Mr M, his long beard brushing the floor>
+          p.changeMoney(100); //Life insurance matures – Collect $100 <Below an I N S sign stands a bent Mr M, his long beard brushing the floor>
 
         }
         if (ran == 9)
         {
           p.changeMoney(0-40*p.getHouses());
           p.changeMoney(0-115*p.getHotels());
-          //You are assessed for street repairs â€“ $40 per house â€“ $115 per hotel <Mr. M., supported by his near-ubiquitous cane in his left hand, holds a pick and shovel over his right shoulder>
+          //You are assessed for street repairs – $40 per house – $115 per hotel <Mr. M., supported by his near-ubiquitous cane in his left hand, holds a pick and shovel over his right shoulder>
 
         }
         if (ran == 10)
@@ -64,12 +83,12 @@ public class CommunityChest implements Space{
         }
         if (ran == 13)
         {
-          p.changeMoney(10); //You have won second prize in a beauty contest â€“ Collect $10 <Mr. M preens with a sash and large bouquet>
+          p.changeMoney(10); //You have won second prize in a beauty contest – Collect $10 <Mr. M preens with a sash and large bouquet>
         }
         if (ran == 14)
         {
           p.changeMoney(100); //You inherit $100 <Mr M. holds his head as unseen people's hands offer brochures titled "Buy Yacht", "World Tour", and "Rolls Royce">
         
-    }
-
+        }
+	}
 }

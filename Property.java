@@ -1,118 +1,86 @@
 import java.util.Scanner;
 public class Property implements Space{
-	private int position;
 	private String name;
 	private Player owner;
 	private boolean isMortgaged;
 	private int numHouses;
-	private final String color;
-	private final int price;
-	private final int RENT_ORIGINAL;
-	private final int RENT_MONOPOLY;
-	private final int RENT_ONEHOUSE;
-	private final int RENT_TWOHOUSE;
-	private final int RENT_THREEHOUSE;
-	private final int RENT_FOURHOUSE;
-	private final int RENT_HOTEL;
-	private final int HOUSE_COST;
-	private final int MORTGAGE;
-        private int rent;
-
-	
-	public Property(int p, String n, String col, int pr, int rOrig, int rMono, int rOne, int rTwo, int rThree, int rFour, int rHotel, int hC, int mA)
+	private String color;
+	private int price;
+	private int rent_normal;
+	private int rent_monopoly;
+	private int rent_onehouse;
+	private int rent_twohouse;
+	private int rent_threehouse;
+	private int rent_fourhouse;
+	private int rent_hotel;
+	private int house_cost;
+	private int mortgage;
+	public Property(String propName, String propColor, int cost, int rn, int rm, int r1, int r2, int r3, int r4, int rh, int hc, int mt)
 	{
-		position = p;
-		name = n;
-		owner = null;
-		isMortgaged = false;
-		numHouses = 0;
-		color = col;
-		price = pr;
-                rent = rOrig;
-		RENT_ORIGINAL = rOrig;
-		RENT_MONOPOLY = rMono;
-		RENT_ONEHOUSE = rOne;
-		RENT_TWOHOUSE = rTwo;
-		RENT_THREEHOUSE = rThree;
-		RENT_FOURHOUSE = rFour;
-		RENT_HOTEL = rHotel;
-		HOUSE_COST = hC;
-		MORTGAGE = mA;
+		name = propName;
+		color = propColor;
+		price = cost;
+		rent_normal = rn;
+		rent_monopoly = rm;
+		rent_onehouse = r1;
+		rent_twohouse = r2;
+		rent_threehouse = r3;
+		rent_fourhouse = r4;
+		rent_hotel = rh;
+		house_cost = hc;
+		mortgage = mt;
 	}
-	
-	public void changeMortgage()
+	public String getName()
+	{
+		return name;
+	}
+	public Player getOwner()
+	{
+		return owner;
+	}
+	public String getColor()
+	{
+		return color;
+	}
+	public void addHouse() 
+	{
+		numHouses++;
+		owner.changeMoney(0 - house_cost);
+		if (numHouses == 5)
+		{
+			owner.changeHouses(0 - 4);
+			owner.changeHotel(1);
+		}
+		else {owner.changeHouses(1);}
+	}
+	public void removeHouse()
+	{
+		numHouses--;
+		owner.changeMoney(0 - house_cost / 2);
+		if (numHouses == 4)
+		{
+			owner.changeHouses(4);
+			owner.changeHotel(0 - 1);
+		}
+		else
+		{
+			owner.changeHouses(0 - 1);
+		}
+	}
+	public void mortgage()
 	{
 		if (!isMortgaged)
 		{
 			isMortgaged = true;
-			owner.changeMoney(MORTGAGE);
+			owner.changeMoney(mortgage);
 		}
-		else
+	}
+	public void unmortgage()
+	{
+		if (isMortgaged)
 		{
 			isMortgaged = false;
-			owner.changeMoney(0 - (int) (MORTGAGE * 1.1));
-		}
-	}
-	
-	public void addHouse()
-	{
-		if (numHouses < 5)
-		{
-			numHouses++;
-			owner.changeMoney(0 - HOUSE_COST);
-		        if (numHouses == 1) 
-			{
-				rent = RENT_ONEHOUSE;
-			}
-			else if (numHouses == 2) 
-			{
-				rent = RENT_TWOHOUSE;
-			}
-			else if (numHouses == 3) 
-			{
-				rent = RENT_THREEHOUSE;
-			}
-			else if (numHouses == 4) 
-			{
-				rent = RENT_FOURHOUSE;
-			}
-			else if (numHouses == 5) 
-			{
-				rent = RENT_HOTEL;
-			}
-		} else {
-                        System.out.println("Maximum houses owned on this property. Cannot add another.");
-                }
-		
-	}
-	public void removeHouse()
-	{
-		if (numHouses >= 0)
-		{
-			numHouses--;
-			owner.changeMoney(HOUSE_COST / 2);
-                        if (numHouses == 0) 
-			{
-				rent = RENT_ORIGINAL;
-			}
-                        else if (numHouses == 1) 
-			{
-				rent = RENT_ONEHOUSE;
-			}
-			else if (numHouses == 2) 
-			{
-				rent = RENT_TWOHOUSE;
-			}
-			else if (numHouses == 3) 
-			{
-				rent = RENT_THREEHOUSE;
-			}
-			else if (numHouses == 4) 
-			{
-				rent = RENT_FOURHOUSE;
-			}
-		} else {
-                        System.out.println("No houses owned on this property. Cannot remove another.");
+			owner.changeMoney(0 - (int) (mortgage * 1.1));
 		}
 	}
 	public void act(Player p)
@@ -131,16 +99,50 @@ public class Property implements Space{
 					found = true;
 					p.changeMoney(0 - price);
 				}
-				// case for n
+				else if (ans.equals("n"))
+				{
+					found = true;
+				}
 			}
 			in.close();
 		}
 		else if (!(p == owner) && !isMortgaged)
 		{
-			p.changeMoney(0 - rent);
-			owner.changeMoney(rent);
+			if (numHouses == 0) 
+			{
+				if (owner.hasMonopoly(color))
+				{
+					p.changeMoney(0 - rent_monopoly);
+					owner.changeMoney(rent_monopoly);
+				}
+				p.changeMoney(0 - rent_normal);
+				owner.changeMoney(rent_normal);
 			}
-			//need case for monopoly, but no houses
+			if (numHouses == 1) 
+			{
+				p.changeMoney(0 - rent_onehouse);
+				owner.changeMoney(rent_onehouse);
+			}
+			if (numHouses == 2) 
+			{
+				p.changeMoney(0 - rent_twohouse);
+				owner.changeMoney(rent_twohouse);
+			}
+			if (numHouses == 3) 
+			{
+				p.changeMoney(0 - rent_threehouse);
+				owner.changeMoney(rent_threehouse);
+			}
+			if (numHouses == 4) 
+			{
+				p.changeMoney(0 - rent_fourhouse);
+				owner.changeMoney(rent_fourhouse);
+			}
+			if (numHouses == 5) 
+			{
+				p.changeMoney(0 - rent_hotel);
+				owner.changeMoney(rent_hotel);
+			}
 		}
 	}
 }

@@ -1,10 +1,18 @@
 import java.util.ArrayList;
 public class Board {
-	private static final int MAX_HOUSES = 32;
-	private static final int MAX_HOTELS = 12;
-	private ArrayList<Space> spaces;
-	public Board()
+	private static ArrayList<Space> spaces;
+	private static ArrayList<Player> players;
+	public Board(ArrayList<Space> spacein, ArrayList<Player> playerin)
 	{
-		spaces = new ArrayList<Space>(); // will need to add each individually
+		spaces = spacein;
+		players = playerin;
+	}
+	public static ArrayList<Space> getSpaces()
+	{
+		return spaces;
+	}
+	public static ArrayList<Player> getPlayers()
+	{
+		return players;
 	}
 }

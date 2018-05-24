@@ -1,10 +1,15 @@
 
-public class Go implements Space{
-  private int position;
-  public Go(pos)
-  {
-    position = pos;
-  }
-  public void act(Player p) {
-  }
+public class Go implements Space {
+	public String getColor()
+	{
+		return null;
+	}
+	public Player getOwner()
+	{
+		return null;
+	}
+	public void act(Player p)
+	{
+		
+	}
 }

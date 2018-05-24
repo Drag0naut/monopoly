@@ -1,16 +1,19 @@
 
 public class Jail implements Space {
-	private int position;
-	public Jail(pos)
+	public Jail()
 	{
-		position = pos;
+		
 	}
-	
+	public String getColor()
+	{
+		return null;
+	}
+	public Player getOwner()
+	{
+		return null;
+	}
 	public void act(Player p)
 	{
-		if (p.isInJail()) 
-		{
-			//give option to roll doubles or pay, up jail turn if staying
-		}
+		
 	}
 }

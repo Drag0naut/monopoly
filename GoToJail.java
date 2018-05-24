@@ -1,13 +1,19 @@
 
 public class GoToJail implements Space {
-  private int position;
-  public GoToJail(pos)
-  {
-    position = pos;
-  }
-  
-  public void act(Player p) {
-    p.goToJail();
-  }
-  
+	public GoToJail()
+	{
+		
+	}
+	public String getColor()
+	{
+		return null;
+	}
+	public Player getOwner()
+	{
+		return null;
+	}
+	public void act(Player p)
+	{
+		p.goToJail();
+	}
 }
