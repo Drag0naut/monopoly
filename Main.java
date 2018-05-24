@@ -26,7 +26,36 @@ public class Main {
         spaces.add(new Chance());
         spaces.add(new Property("Vermont Avenue", "Light BLue", 100, 6, 12, 30, 90, 270, 400, 550, 50, 50));
         spaces.add(new Property("Connecticut Avenue", "Light Blue", 120, 8, 16, 40, 100, 300, 450, 600, 50, 60));
-        //add more spaces
+        spaces.add(new Jail());
+        spaces.add(new Property("St. Charles Place", "Pink", 140, 10, 20, 50, 150, 450, 625, 750, 100, 70));
+        spaces.add(new Utility("Electric Company"));
+        spaces.add(new Property("States Avenue", "Pink", 140, 10, 20, 50, 150, 450, 625, 750, 100, 70));
+        spaces.add(new Property("Virginia Avenue", "Pink", 60, 12, 24, 60, 180, 500, 700, 900, 100, 80));
+        spaces.add(new Railroad("Pennsylvania Railroad"));
+        spaces.add(new Property("St. James Place", "Orange", 180, 14, 28, 70, 200, 550, 750, 950, 100, 90));
+        spaces.add(new CommunityChest());
+        spaces.add(new Property("Tennessee Avenue", "Orange", 180, 14, 28, 70, 200, 550, 750, 950, 100, 90));
+        spaces.add(new Property("New York Avenue", "Orange", 200, 16, 32, 80, 220, 600, 800, 1000, 100, 100));
+        spaces.add(new FreeParking());
+        spaces.add(new Property("Kentucky Avenue", "Red", 220, 18, 36, 90, 250, 700, 875, 1050, 150, 110));
+        spaces.add(new Chance());
+        spaces.add(new Property("Indiana Avenue", "Red", 220, 18, 36, 90, 250, 700, 875, 1050, 150, 110));
+        spaces.add(new Property("Illinois Avenue", "Red", 240, 20, 40, 100, 300, 750, 925, 1100, 150, 120));
+        spaces.add(new Railroad("B. & O. RailRoad"));
+        spaces.add(new Property("Atlantic Avenue", "Yellow", 260, 22, 44, 110, 330, 800, 975, 1150, 150, 130));
+        spaces.add(new Property("Ventnor Avenue", "Yellow", 260, 22, 44, 110, 330, 800, 975, 1150, 150, 130));
+        spaces.add(new Utility("Water Works"));
+        spaces.add(new Property("Marvin Gardens", "Yellow", 280, 24, 48, 120, 360, 850, 1025, 1200, 150, 140));
+        spaces.add(new GoToJail());
+        spaces.add(new Property("Pacific Avenue", "Green", 300, 26, 52, 130, 390, 900, 1100, 1275, 200, 150));
+        spaces.add(new Property("North Carolina Avenue", "Green", 300, 26, 52, 130, 390, 900, 1100, 1275, 200, 150));
+        spaces.add(new CommunityChest());
+        spaces.add(new Property("Pennsylvania Avenue", "Green", 320, 28, 56, 150, 450, 1000, 1200, 1400, 200, 160));
+        spaces.add(new Railroad("Short Line"));
+        spaces.add(new Chance());
+        spaces.add(new Property("Park Place", "Blue", 350, 35, 70, 175, 500, 1100, 1300, 1500, 200, 175));
+        spaces.add(new Tax("Luxury Tax", 75));
+        spaces.add(new Property("Boardwalk", "Blue", 400, 50, 100, 200, 600, 1400, 1700, 2000, 200, 200));
         Board board = new Board(spaces, playerList);
         System.out.println("Each of you starts with $1500. Let's play!");
         for (int i = 0; i < 35; i++)
