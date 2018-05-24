@@ -14,7 +14,6 @@ public class Main {
              String temp = in.next();
              playerList.add(new Player(temp));
         }
-        in.close();
         ArrayList<Space> spaces = new ArrayList<Space>();
         spaces.add(new Go());
         spaces.add(new Property("Mediterranean Avenue", "Brown", 60, 2, 4, 10, 30, 90, 160, 250, 50, 30));

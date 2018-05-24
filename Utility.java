@@ -42,7 +42,6 @@ public class Utility implements Space{
 					found = true;
 				}
 			}
-			in.close();
 		}
 		else if (!(p == owner) && !isMortgaged)
 		{

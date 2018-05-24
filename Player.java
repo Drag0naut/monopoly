@@ -26,6 +26,7 @@ public class Player {
 	{
 		money += n;
 		System.out.println(this.getName() + " had his money changed by " + n);
+		System.out.println(this.getName() + " now has " + this.getMoney() + " dollars");
 	}
 	public int getMoney()
 	{
@@ -37,9 +38,10 @@ public class Player {
 	}
 	public void turn()
 	{
+		System.out.println(this.getName() + "'s turn!");
 		int doubCt = 0;
 		boolean done = false;
-		while (!done)
+		while (!done && money >= 0)
 		{
 			if (isInJail)
 			{
@@ -79,7 +81,6 @@ public class Player {
 							}
 							else {jailTurns++;}
 						}
-						in.close();
 					}
 				}
 			}
@@ -103,8 +104,8 @@ public class Player {
 			{	
 				int pos = (location + i + j) % 40;
 				moveTo(pos);
-				Board.getSpaces().get(pos).act(this);
 				changeMoney(200);
+				Board.getSpaces().get(pos).act(this);
 			}
 			else 
 			{
@@ -112,8 +113,11 @@ public class Player {
 				moveTo(pos);
 				Board.getSpaces().get(pos).act(this);
 			}
+			while (money < 0)
+			{
+				//time to mortgage
+			}
 		}
-		
 	}
 	public void moveTo(int n)
 	{

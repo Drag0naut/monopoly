@@ -44,14 +44,17 @@ public class Property implements Space{
 	}
 	public void addHouse() 
 	{
-		numHouses++;
-		owner.changeMoney(0 - house_cost);
-		if (numHouses == 5)
+		if (owner.hasMonopoly(color))
 		{
-			owner.changeHouses(0 - 4);
-			owner.changeHotel(1);
+			numHouses++;
+			owner.changeMoney(0 - house_cost);
+			if (numHouses == 5)
+			{
+				owner.changeHouses(0 - 4);
+				owner.changeHotel(1);
+			}
+			else {owner.changeHouses(1);}
 		}
-		else {owner.changeHouses(1);}
 	}
 	public void removeHouse()
 	{
@@ -104,7 +107,6 @@ public class Property implements Space{
 					found = true;
 				}
 			}
-			in.close();
 		}
 		else if (!(p == owner) && !isMortgaged)
 		{
@@ -115,8 +117,11 @@ public class Property implements Space{
 					p.changeMoney(0 - rent_monopoly);
 					owner.changeMoney(rent_monopoly);
 				}
-				p.changeMoney(0 - rent_normal);
-				owner.changeMoney(rent_normal);
+				else 
+				{
+					p.changeMoney(0 - rent_normal);
+					owner.changeMoney(rent_normal);
+				}
 			}
 			if (numHouses == 1) 
 			{
