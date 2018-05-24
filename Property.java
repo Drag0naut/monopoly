@@ -89,10 +89,10 @@ public class Property implements Space{
 		{
 			Scanner in = new Scanner(System.in);
 			System.out.println("Purchase property? y/n");
-			String ans = in.next();
 			boolean found = false;
 			while (!found)
 			{
+				String ans = in.next();
 				if (ans.equals("y"))
 				{
 					owner = p;

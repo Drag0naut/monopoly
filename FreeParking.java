@@ -5,6 +5,10 @@ public class FreeParking implements Space {
 	{
 		money = 100;
 	}
+	public String getName()
+	{
+		return "Free Parking";
+	}
 	public String getColor()
 	{
 		return null;

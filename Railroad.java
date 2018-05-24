@@ -27,19 +27,19 @@ public class Railroad implements Space {
 		{
 			Scanner in = new Scanner(System.in);
 			System.out.println("Purchase property? y/n");
-			String ans = in.next();
 			boolean found = false;
 			while (!found)
 			{
+				String ans = in.next();
 				if (ans.equals("y"))
 				{
 					owner = p;
 					found = true;
-					p.addRailroad();
-					p.changeMoney(0-cost);
+					p.changeMoney(0 - cost);
 				}
-				if (ans.equals("n"))
+				else if (ans.equals("n"))
 				{
+					found = true;
 				}
 			}
 			in.close();

@@ -25,6 +25,7 @@ public class Player {
 	public void changeMoney(int n)
 	{
 		money += n;
+		System.out.println(this.getName() + " had his money changed by " + n);
 	}
 	public int getMoney()
 	{
@@ -86,8 +87,8 @@ public class Player {
 			{
 				goToJail();
 			}
-			int i = (int) Math.random() * 6 + 1;
-			int j = (int) Math.random() * 6 + 1;
+			int i = (int) (Math.random() * 6) + 1;
+			int j = (int) (Math.random() * 6) + 1;
 			if (i == j)
 			{
 				doubCt++;
@@ -97,6 +98,7 @@ public class Player {
 				done = true;
 			}
 			lastRoll = i + j;
+			System.out.println(this.getName() + " has rolled a " + lastRoll);
 			if (location + i + j >= 40)
 			{	
 				int pos = (location + i + j) % 40;
@@ -116,6 +118,7 @@ public class Player {
 	public void moveTo(int n)
 	{
 		location = n;
+		System.out.println(this.getName() + " has moved to " + Board.getSpaces().get(location).getName());
 	}
 	public int roll()
 	{

@@ -4,6 +4,10 @@ public class Chance implements Space{
 	{
 		
 	}
+	public String getName()
+	{
+		return "Chance";
+	}
 	public String getColor()
 	{
 		return null;
@@ -14,7 +18,7 @@ public class Chance implements Space{
 	}
 	public void act(Player p)
 	{
-		int ran = (int) Math.random() * 16;
+		int ran = (int) (Math.random() * 16);
 		if (ran == 0)
         {
             p.moveTo(0);

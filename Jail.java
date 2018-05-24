@@ -4,6 +4,10 @@ public class Jail implements Space {
 	{
 		
 	}
+	public String getName()
+	{
+		return "Jail";
+	}
 	public String getColor()
 	{
 		return null;

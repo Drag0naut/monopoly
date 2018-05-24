@@ -5,6 +5,10 @@ public class CommunityChest implements Space {
 	{
 		
 	}
+	public String getName()
+	{
+		return "Community Chest";
+	}
 	public String getColor()
 	{
 		return null;
@@ -15,7 +19,7 @@ public class CommunityChest implements Space {
 	}
 	public void act(Player p)
 	{
-		int ran = (int) Math.random() * 15;
+		int ran = (int) (Math.random() * 15);
         if (ran == 0)
         {
           p.moveTo(0); // Player advances to go, collects $200

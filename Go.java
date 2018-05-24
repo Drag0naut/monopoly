@@ -4,6 +4,10 @@ public class Go implements Space {
 	{
 		return null;
 	}
+	public String getName()
+	{
+		return "Go!";
+	}
 	public Player getOwner()
 	{
 		return null;
