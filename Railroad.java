@@ -38,7 +38,8 @@ public class Railroad implements Space {
 					p.getProperties().add(this.getName());
 					found = true;
 					System.out.println(p.getName() + " has purchased " + this.getName());
-					p.changeMoney(0 - cost);				}
+					p.changeMoney(0 - cost);				
+				}
 				else if (ans == 2)
 				{
 					found = true;
