@@ -46,6 +46,10 @@ public class Property implements Space{
 	{
 		return color;
 	}
+	public int getHouses()
+	{
+		return numHouses;
+	}
 	public void addHouse() 
 	{
 		if (owner.hasMonopoly(color) && numHouses < 5)

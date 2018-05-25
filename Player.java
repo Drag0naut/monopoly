@@ -53,11 +53,11 @@ public class Player {
 				}
 				else
 				{
-					Scanner in = new Scanner(System.in);
 					System.out.println("Pay $50 fine / Use Get Out oF Jail Free Card (1) or roll for doubles (2)?");
 					boolean found = false;
 					while(!found)
 					{
+						Scanner in = new Scanner(System.in);
 						int ans = in.nextInt();
 						if (ans == 1)
 						{
@@ -113,13 +113,13 @@ public class Player {
 				moveTo(pos);
 				Board.getSpaces().get(pos).act(this);
 			}
-			while (money < 0)
+			while (money < 0 && !isBankrupt)
 			{
 				System.out.println("You are in debt! You can declare bankruptcy (1), sell houses (2), or mortgage properties (3)");
-				Scanner in = new Scanner(System.in);
 				boolean found = false;
 				while (!found)
 				{
+					Scanner in = new Scanner(System.in);
 					int rec = in.nextInt();
 					if (rec == 1) 
 					{
@@ -170,7 +170,7 @@ public class Player {
 				}
 			}
 		}
-		if (isBankrupt) {System.out.println(this.getName() + "is bankrupt!");}
+		if (isBankrupt) {System.out.println(this.getName() + " is bankrupt!");}
 		else
 		{
 			System.out.println("Options: (1) End turn; (2) Build houses; (3) Sell houses; (4) Mortgage; (5) Unmortgage; (6) Trade");
@@ -249,6 +249,28 @@ public class Player {
 							}
 						}
 					}
+					else if (end == 6)
+					{
+						System.out.println("Who would you like to trade with?");
+						{
+							Player dic = null;
+							boolean found = false;
+							while (!found)
+							{
+								Scanner monopolyactuallysucks = new Scanner(System.in);
+								String res = monopolyactuallysucks.nextLine();
+								for (Player k: Board.getPlayers())
+								{
+									if (k.getName().equals(res))
+									{
+										dic = k;
+										found = true;
+									}
+								}
+							}
+							trade(dic);
+						}
+					}
 					if (end != 1)
 					{
 						System.out.println("Options: (1) End turn; (2) Build houses; (3) Sell houses; (4) Mortgage; (5) Unmortgage; (6) Trade");
@@ -273,6 +295,11 @@ public class Player {
 		isInJail = true;
 		moveTo(10);
 		jailTurns = 0;
+	}
+	
+	public void trade(Player p) {
+		//Make sure properties shown have no houses on them
+		//Make sure nobody goes under $0 after trade
 	}
 	public boolean hasMonopoly(String color)
 	{

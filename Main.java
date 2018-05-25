@@ -63,22 +63,24 @@ public class Main {
         	for (Player p: playerList)
         	{
         		p.turn();
-        	}
-        	int counter = 0;
-        	Player winner = new Player("Nobody");
-        	for (Player p1: playerList)
-        	{
-        		if (!(p1.getBankrupt()))
+        		int counter = 0;
+        		Player winner = new Player("Nobody");
+        		for (Player p1: playerList)
+        		{	
+        			if (!(p1.getBankrupt()))
+        			{
+        				counter++;
+        				winner = p1;
+        			}
+        		}
+        		if (counter == 1) 
         		{
-        			counter++;
-        			winner = p1;
+        			done = true;
+        			System.out.println(winner.getName() + " is the winner!!!");
+        			break;
         		}
         	}
-        	if (counter == 1) 
-        	{
-        		done = true;
-        		System.out.println(winner.getName() + "is the winner!!!");
-        	}
+        	
         }
 	}
 }
