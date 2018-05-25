@@ -13,15 +13,22 @@ public class Player {
 	private int houses;
 	private int hotels;
 	private boolean isBankrupt;
+	private ArrayList<String> properties;
 	public Player(String n)
 	{
 		name = n;
 		location = 0;
 		money = 1500;
+		properties = new ArrayList<String>();
 	}
 	public String getName()
 	{
 		return name;
+	}
+	
+	public ArrayList<String> getProperties()
+	{
+		return properties;
 	}
 	public void changeMoney(int n)
 	{
@@ -287,7 +294,7 @@ public class Player {
 	public int roll()
 	{
 		int i = (int) (Math.random() * 6) + 1;
-		int j = (int) (Math.random() * 6) + 1);
+		int j = (int) (Math.random() * 6) + 1;
 		return i + j;
 	}
 	public void goToJail()

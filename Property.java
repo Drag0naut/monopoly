@@ -115,7 +115,9 @@ public class Property implements Space{
 				if (ans == 1)
 				{
 					owner = p;
+					p.getProperties().add(this.getName());
 					found = true;
+					System.out.println(p.getName() + " has purchased " + this.getName());
 					p.changeMoney(0 - price);
 				}
 				else if (ans == 2)
