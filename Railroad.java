@@ -26,18 +26,19 @@ public class Railroad implements Space {
 		if (owner == null)
 		{
 			Scanner in = new Scanner(System.in);
-			System.out.println("Purchase property? y/n");
+			System.out.println("Purchase property? Yes (1) or No (2)");
 			boolean found = false;
 			while (!found)
 			{
-				String ans = in.next();
-				if (ans.equals("y"))
+				int ans = in.nextInt();
+				if (ans == 1)
 				{
 					owner = p;
 					found = true;
 					p.changeMoney(0 - cost);
+					System.out.println(p.getName() + " has purchased " + this.getName());
 				}
-				else if (ans.equals("n"))
+				else if (ans == 2)
 				{
 					found = true;
 				}
@@ -74,6 +75,7 @@ public class Railroad implements Space {
 		  {
 			  isMortgaged = true;
 			  owner.changeMoney(mortgage);
+			  System.out.println(owner.getName() + " has mortgaged " + this.getName());
 		  }
 	  }
 	  public void unmortgage()
@@ -82,6 +84,7 @@ public class Railroad implements Space {
 		  {
 			  isMortgaged = false;
 			  owner.changeMoney(0 - (int) (mortgage * 1.1));
+			  System.out.println(owner.getName() + " has unmortgaged " + this.getName());
 		  }
 	  }
 	  public void addHouse() {}

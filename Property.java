@@ -44,7 +44,7 @@ public class Property implements Space{
 	}
 	public void addHouse() 
 	{
-		if (owner.hasMonopoly(color))
+		if (owner.hasMonopoly(color) && numHouses < 5)
 		{
 			numHouses++;
 			owner.changeMoney(0 - house_cost);
@@ -55,20 +55,25 @@ public class Property implements Space{
 			}
 			else {owner.changeHouses(1);}
 		}
+		System.out.println(owner.getName() + " has added a house to " + this.getName());
 	}
 	public void removeHouse()
 	{
-		numHouses--;
-		owner.changeMoney(0 - house_cost / 2);
-		if (numHouses == 4)
+		if (owner.hasMonopoly(color) && numHouses > 1)
 		{
-			owner.changeHouses(4);
-			owner.changeHotel(0 - 1);
+			numHouses--;
+			owner.changeMoney(0 - house_cost / 2);
+			if (numHouses == 4)
+			{
+				owner.changeHouses(4);
+				owner.changeHotel(0 - 1);
+			}
+			else
+			{
+				owner.changeHouses(0 - 1);
+			}
 		}
-		else
-		{
-			owner.changeHouses(0 - 1);
-		}
+		System.out.println(owner.getName() + "has removed a house from " + this.getName());
 	}
 	public void mortgage()
 	{
@@ -76,6 +81,7 @@ public class Property implements Space{
 		{
 			isMortgaged = true;
 			owner.changeMoney(mortgage);
+			System.out.println(owner.getName() + " has mortgaged " + this.getName());
 		}
 	}
 	public void unmortgage()
@@ -84,6 +90,7 @@ public class Property implements Space{
 		{
 			isMortgaged = false;
 			owner.changeMoney(0 - (int) (mortgage * 1.1));
+			System.out.println(owner.getName() + " has unmortgaged " + this.getName());
 		}
 	}
 	public void act(Player p)
@@ -91,18 +98,18 @@ public class Property implements Space{
 		if (owner == null)
 		{
 			Scanner in = new Scanner(System.in);
-			System.out.println("Purchase property? y/n");
+			System.out.println("Purchase property? Yes (1) or No (2)");
 			boolean found = false;
 			while (!found)
 			{
-				String ans = in.next();
-				if (ans.equals("y"))
+				int ans = in.nextInt();
+				if (ans == 1)
 				{
 					owner = p;
 					found = true;
 					p.changeMoney(0 - price);
 				}
-				else if (ans.equals("n"))
+				else if (ans == 2)
 				{
 					found = true;
 				}

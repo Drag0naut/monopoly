@@ -19,80 +19,92 @@ public class CommunityChest implements Space {
 	}
 	public void act(Player p)
 	{
-		int ran = (int) (Math.random() * 15);
+		int ran = (int) (Math.random() * 16);
         if (ran == 0)
         {
-          p.moveTo(0); // Player advances to go, collects $200
+        	System.out.println("Community Chest Card: Advance to Go (Collect $200).");
+        	p.moveTo(0);
         }
         if (ran == 1)
         {
-          p.changeMoney(200); // Bank error in your favor – Collect $200 
+        	System.out.println("Community Chest Card: Bank error in your favor -- Collect $200.");
+        	p.changeMoney(200);  
         }
         if (ran == 2)
         {
-          p.changeMoney(0-50); //Doctor's fees {fee} – Pay $50 
+        	System.out.println("Community Chest Card: Doctor's fees -- Pay $50.");
+        	p.changeMoney(0-50);
         }
         if (ran == 3)
         {
-         p.drawGetOutCard(); //Get Out of Jail Free
+        	System.out.println("Community Chest Card: Get Out Of Jail Free -- This card may be kept until needed.");
+        	p.drawGetOutCard();
         }
         if (ran == 4)
         {
-          p.goToJail();
+        	System.out.println("Community Chest Card: Go To Jail -- Go Directly To Jail -- Do not pass Go -- Do not collect $200.");
+        	p.goToJail();
         }
         if (ran == 5)
         {
+        	System.out.println("Community Chest Card: Grand Opera Night -- Collect $50 from every player for opening night seats.");
         	p.changeMoney(150);
         	ArrayList<Player> temp = Board.getPlayers();
             for (int i = 0; i < temp.size(); i++)
             {
             	if (!(temp.get(i).equals(p))) {temp.get(i).changeMoney(0 - 50);}
             }
-           // what happens when someones bankrupt, Grand Opera Night {Opening} – Collect $50 from every player for opening night seats
         }
         if (ran == 6)
         {
-          p.changeMoney(100); //Holiday {Xmas} Fund matures - Receive {Collect} $100 <Mr. M carries along a giant Xmas sock containing a sheaf of cash>
+        	System.out.println("Community Chest Card: Xmas Fund matures -- Collect $100.");
+        	p.changeMoney(100);
         }
         if (ran == 7)
         {
-          p.changeMoney(20); //Income tax refund – Collect $20 <Mr M faints back against a man displaying the Refund paper>
-
+        	System.out.println("Community Chest Card: Income Tax Refund -- Collect $20.");
+        	p.changeMoney(20);
         }
         if (ran == 8)
         {
-          p.changeMoney(100); //Life insurance matures – Collect $100 <Below an I N S sign stands a bent Mr M, his long beard brushing the floor>
-
+        	System.out.println("Community Chest Card: Life Insurance Matures -- Collect $100.");
+        	p.changeMoney(100);
         }
         if (ran == 9)
         {
-          p.changeMoney(0-40*p.getHouses());
-          p.changeMoney(0-115*p.getHotels());
-          //You are assessed for street repairs – $40 per house – $115 per hotel <Mr. M., supported by his near-ubiquitous cane in his left hand, holds a pick and shovel over his right shoulder>
-
+        	System.out.println("Community Chest Card: You are assessed for street repairs -- $40 per house -- $115 per hotel.");
+        	p.changeMoney(0-40*p.getHouses());
+        	p.changeMoney(0-115*p.getHotels());
         }
         if (ran == 10)
         {
-          p.changeMoney(0-100); //Pay hospital fees of $100 {Pay hospital $100} <A bored nurse holds out her hand for payment while Mr. M holds 2 swaddled infants, one in each arm>
+        	System.out.println("Community Chest Card: Pay hospital fees of $100.");
+        	p.changeMoney(0-100); 
         }
         if (ran == 11)
         {
-          p.changeMoney(0-150);       //Pay school fees {tax} of $150 <A bespectacled schoolboy unhappily receives a head pat and a dime ((Rockefeller style) from Mr. M.>
+        	System.out.println("Community Chest Card: Pay school fees of $150.");
+        	p.changeMoney(0-150);
         }
-        
         if (ran == 12)
         {
-          p.changeMoney(25);       //Receive $25 consultancy fee {Receive for services $25} <As Justice of the Peace, a stern Mr. M holds out his hand for fee from an embarrassed groom whose bride hold a bouquet behind him>
-
+        	System.out.println("Community Chest Card: Receive $25 consultancy fee.");
+          p.changeMoney(25);
         }
         if (ran == 13)
         {
-          p.changeMoney(10); //You have won second prize in a beauty contest – Collect $10 <Mr. M preens with a sash and large bouquet>
+        	System.out.println("Community Chest Card: You have won second prize in a beauty contest -- Collect $10.");
+        	p.changeMoney(10);
         }
         if (ran == 14)
         {
-          p.changeMoney(100); //You inherit $100 <Mr M. holds his head as unseen people's hands offer brochures titled "Buy Yacht", "World Tour", and "Rolls Royce">
-        
+        	System.out.println("Community Chest Card: You inherit $100.");
+        	p.changeMoney(100);
+        }
+        if (ran == 15)
+        {
+        	System.out.println("Community Chest Card: From sale of stock you get $50.");
+        	p.changeMoney(50);
         }
 	}
 	public void addHouse() {}

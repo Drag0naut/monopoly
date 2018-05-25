@@ -26,8 +26,7 @@ public class Player {
 	public void changeMoney(int n)
 	{
 		money += n;
-		System.out.println(this.getName() + " had his money changed by " + n);
-		System.out.println(this.getName() + " now has " + this.getMoney() + " dollars");
+		System.out.println(this.getName() + " now has " + this.getMoney() + " dollars following a change of " + n);
 	}
 	public int getMoney()
 	{
@@ -55,12 +54,12 @@ public class Player {
 				else
 				{
 					Scanner in = new Scanner(System.in);
-					System.out.println("Pay $50 fine / Use Get Out oF Jail Free Card (y) or roll for doubles (n)?");
+					System.out.println("Pay $50 fine / Use Get Out oF Jail Free Card (1) or roll for doubles (2)?");
 					boolean found = false;
 					while(!found)
 					{
-						String ans = in.next();
-						if (ans.equals("y"))
+						int ans = in.nextInt();
+						if (ans == 1)
 						{
 							found = true;
 							isInJail = false;
@@ -68,7 +67,7 @@ public class Player {
 							else {this.changeMoney(0 - 50);}
 							turn();
 						}
-						else if (ans.equals("n"))
+						else if (ans == 2)
 						{
 							found = true;
 							int x = (int) Math.random() * 6 + 1;
@@ -100,7 +99,7 @@ public class Player {
 				goToJail();
 			}
 			lastRoll = i + j;
-			System.out.println(this.getName() + " has rolled a " + i + " and " + j + ", which totals " + lastRoll);
+			System.out.println(this.getName() + " has rolled a " + i + " and " + j + ", totalling " + lastRoll);
 			if (location + i + j >= 40)
 			{	
 				int pos = (location + i + j) % 40;
@@ -161,7 +160,7 @@ public class Player {
 		if (isBankrupt) {System.out.println(this.getName() + "is bankrupt!");}
 		else
 		{
-			System.out.println("1 - End turn; 2 - Build houses; 3 - Sell houses; 4 - Mortgage; 5 - Unmortgage");
+			System.out.println("Options: (1) End turn; (2) Build houses; (3) Sell houses; (4) Mortgage; (5) Unmortgage");
 			{
 				Scanner in = new Scanner(System.in);
 				boolean doneTurn = false;
@@ -232,7 +231,7 @@ public class Player {
 							}
 						}
 					}
-					else {System.out.println("1 - End turn; 2 - Build houses; 3 - Sell houses; 4 - Mortgage; 5 - Unmortgage");}
+					else {System.out.println("Options: (1) End turn; (2) Build houses; (3) Sell houses; (4) Mortgage; (5) Unmortgage");}
 				}
 			}
 		}
@@ -240,7 +239,7 @@ public class Player {
 	public void moveTo(int n)
 	{
 		location = n;
-		System.out.println(this.getName() + " has moved to " + Board.getSpaces().get(location).getName());
+		System.out.println(this.getName() + " moved to " + Board.getSpaces().get(location).getName());
 	}
 	public int roll()
 	{

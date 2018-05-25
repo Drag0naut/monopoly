@@ -21,22 +21,26 @@ public class Chance implements Space{
 		int ran = (int) (Math.random() * 16);
 		if (ran == 0)
         {
+			System.out.println("Chance Card: Advance to Go!");
             p.moveTo(0);
-            Board.getSpaces().get(0).act(p);// go to  go space
+            Board.getSpaces().get(0).act(p);
         }
         if (ran == 1)
         {
+        	System.out.println("Chance Card: Advance to Illinois Ave.");
             p.moveTo(24);
-            Board.getSpaces().get(24).act(p);//x = illinoisave, go to  Illinois Ave.
+            Board.getSpaces().get(24).act(p);
         }
         if (ran == 2)
         {
-            p.moveTo(11); // x = stcharlesplace, go to st charles place
+        	System.out.println("Chance Card: Advance to St. Charles Place.");
+            p.moveTo(11); 
             Board.getSpaces().get(11).act(p);
         }
         if (ran == 3)
         {
-            if (p.getPos() < 12 || p.getPos() > 28) // x = pos of first util, y = pos of last util
+        	System.out.println("Chance Card: Advance to the nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.");
+            if (p.getPos() < 12 || p.getPos() > 28)
             {
             	p.moveTo(12);
             	if (Board.getSpaces().get(12).getOwner() != null && Board.getSpaces().get(12).getOwner() != p)
@@ -60,6 +64,7 @@ public class Chance implements Space{
         }
         if (ran == 4)
         {
+        	System.out.println("Chance Card: Advance to the nearest Railroad and pay the owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.");
             if (p.getPos() < 5) {p.moveTo(5); p.moveTo(5);}
             else if (p.getPos() < 15) {p.moveTo(15); p.moveTo(15);}
             else if (p.getPos() < 25) {p.moveTo(25); p.moveTo(25);}
@@ -68,58 +73,67 @@ public class Chance implements Space{
         }
         if (ran == 5)
         {
-            p.changeMoney(50);//give 50 bucks to  player
+        	System.out.println("Chance Card: Bank pays you dividend of $50.");
+            p.changeMoney(50);
         }
         if (ran == 6)
         {
-            p.drawGetOutCard();//get out of jail  free card
+        	System.out.println("Chance Card: Get Out Of Jail Free -- This card may be kept until needed.");
+            p.drawGetOutCard();
         }
         if (ran == 7)
         {
-            p.moveTo(p.getPos() - 3);// go back  3 spaces
+        	System.out.println("Chance Card: Go Back 3 Spaces");
+            p.moveTo(p.getPos() - 3);
         }
         if (ran == 8)
         {
-            p.goToJail();// go  to jail
+        	System.out.println("Chance Card: Go To Jail -- Go Directly To Jail -- Do not pass Go, do not collect $200.");
+            p.goToJail();
         }
         if (ran == 9)
         {
+        	System.out.println("Chance Card: Make general repairs on all your property -- For each house pay $25 -- For each hotel pay $100.");
         	int i = 0;
         	i += p.getHouses() * 25;
         	i += p.getHotels() * 100;
-            p.changeMoney(0-i); //25 bucks foreach house, 100 for each hotel owned
+            p.changeMoney(0-i);
         }
         if (ran == 10)
         {
-            p.changeMoney(0-15);// 15 $ tax
+        	System.out.println("Chance Card: Pay poor tax of $15.");
+            p.changeMoney(0-15);
         }
         if (ran == 11)
         {
+        	System.out.println("Chance Card: Take a trip to Reading Railroad -- If you pass Go, collect $200.");
         	if (p.getPos() > 5) {p.changeMoney(200);}
-            p.moveTo(5); //go to reading railroad, if pass go,  collect 200
+            p.moveTo(5);
         }
-        
         if (ran == 12)
         {
-            p.moveTo(39); // go  to  boardwalk
+        	System.out.println("Chance Card: Advance to Boardwalk.");
+            p.moveTo(39);
         }
         if (ran == 13)
         {
+        	System.out.println("Chance Card: You have been elected Chairman of the Board -- Pay each $50");
             p.changeMoney(0-150);
             ArrayList<Player> temp = Board.getPlayers();
             for (int i = 0; i < temp.size(); i++)
             {
             	if (!(temp.get(i).equals(p))) {temp.get(i).changeMoney(50);}
             }
-            //pay each player $50, check if this works perfectly tho
         }
         if (ran == 14)
         {
-            p.changeMoney(150); //collect $150
+        	System.out.println("Chance Card: Your building and loan matures -- Collect $150.");
+            p.changeMoney(150);
         }
         if (ran == 15)
         {
-            p.changeMoney(100);//collect $100
+        	System.out.println("Chance Card: You have won a crossword competition -- Collect $100.");
+            p.changeMoney(100);
         }
 	}
 	public void addHouse() {}
