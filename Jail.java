@@ -20,4 +20,8 @@ public class Jail implements Space {
 	{
 		
 	}
+	public void addHouse() {}
+	public void removeHouse() {}
+	public void mortgage() {}
+	public void unmortgage() {}
 }

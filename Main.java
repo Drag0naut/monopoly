@@ -57,11 +57,27 @@ public class Main {
         spaces.add(new Property("Boardwalk", "Blue", 400, 50, 100, 200, 600, 1400, 1700, 2000, 200, 200));
         Board board = new Board(spaces, playerList);
         System.out.println("Each of you starts with $1500. Let's play!");
-        for (int i = 0; i < 35; i++)
+        boolean done = false;
+        while (!done)
         {
         	for (Player p: playerList)
         	{
         		p.turn();
+        	}
+        	int counter = 0;
+        	Player winner = new Player("Nobody");
+        	for (Player p1: playerList)
+        	{
+        		if (!(p1.getBankrupt()))
+        		{
+        			counter++;
+        			winner = p1;
+        		}
+        	}
+        	if (counter == 1) 
+        	{
+        		done = true;
+        		System.out.println(winner.getName() + "is the winner!!!");
         	}
         }
 	}

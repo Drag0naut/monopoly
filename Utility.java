@@ -72,5 +72,7 @@ public class Utility implements Space{
 			isMortgaged = false;
 			owner.changeMoney(0 - (int) (mortgage * 1.1));
 		}
-}
+	}
+	public void addHouse() {}
+	public void removeHouse() {}
 }

@@ -20,4 +20,8 @@ public class GoToJail implements Space {
 	{
 		p.goToJail();
 	}
+	public void addHouse() {}
+	public void removeHouse() {}
+	public void mortgage() {}
+	public void unmortgage() {}
 }

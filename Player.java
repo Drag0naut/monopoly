@@ -12,6 +12,7 @@ public class Player {
 	private int numGetOutCards;
 	private int houses;
 	private int hotels;
+	private boolean isBankrupt;
 	public Player(String n)
 	{
 		name = n;
@@ -41,7 +42,7 @@ public class Player {
 		System.out.println(this.getName() + "'s turn!");
 		int doubCt = 0;
 		boolean done = false;
-		while (!done && money >= 0)
+		while (!done && !isBankrupt)
 		{
 			if (isInJail)
 			{
@@ -84,10 +85,6 @@ public class Player {
 					}
 				}
 			}
-			if (doubCt == 3)
-			{
-				goToJail();
-			}
 			int i = (int) (Math.random() * 6) + 1;
 			int j = (int) (Math.random() * 6) + 1;
 			if (i == j)
@@ -97,6 +94,10 @@ public class Player {
 			else
 			{
 				done = true;
+			}
+			if (doubCt == 3)
+			{
+				goToJail();
 			}
 			lastRoll = i + j;
 			System.out.println(this.getName() + " has rolled a " + i + " and " + j + ", which totals " + lastRoll);
@@ -115,7 +116,124 @@ public class Player {
 			}
 			while (money < 0)
 			{
-				//time to mortgage
+				System.out.println("You are in debt! You can declare bankruptcy (1), sell houses (2), or mortgage properties (3)");
+				Scanner in = new Scanner(System.in);
+				boolean found = false;
+				while (!found)
+				{
+					int rec = in.nextInt();
+					if (rec == 1) {isBankrupt = true; found = true;}
+					if (rec == 2)
+					{
+						found = true;
+						System.out.println("Which property would you like to sell a house?");
+						String res = in.next();
+						for (int k = 0; k < 40; k++)
+						{
+							if (Board.getSpaces().get(k).getName().equals(res))
+							{
+								if (Board.getSpaces().get(k).getOwner().equals(this))
+								{
+									Board.getSpaces().get(k).removeHouse();
+								}
+							}
+						}
+					}
+					if (rec == 3)
+					{
+						found = true;
+						System.out.println("Which property would you lke to mortgage?");
+						String res1 = in.next();
+						for (int k = 0; k < 40; k++)
+						{
+							if (Board.getSpaces().get(k).getName().equals(res1))
+							{
+								if (Board.getSpaces().get(k).getOwner().equals(this))
+								{
+									Board.getSpaces().get(k).mortgage();
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		if (isBankrupt) {System.out.println(this.getName() + "is bankrupt!");}
+		else
+		{
+			System.out.println("1 - End turn; 2 - Build houses; 3 - Sell houses; 4 - Mortgage; 5 - Unmortgage");
+			{
+				Scanner in = new Scanner(System.in);
+				boolean doneTurn = false;
+				while (!doneTurn)
+				{
+					int end = in.nextInt();
+					if (end == 1)
+					{
+						doneTurn = true;
+					}
+					else if (end == 2)
+					{
+						System.out.println("Which property would you like to add a house?");
+						String res = in.next();
+						for (int k = 0; k < 40; k++)
+						{
+							if (Board.getSpaces().get(k).getName().equals(res))
+							{
+								if (Board.getSpaces().get(k).getOwner().equals(this))
+								{
+									Board.getSpaces().get(k).addHouse();
+								}
+							}
+						}
+					}
+					else if (end == 3)
+					{
+						System.out.println("Which property would you like to sell a house?");
+						String res = in.next();
+						for (int k = 0; k < 40; k++)
+						{
+							if (Board.getSpaces().get(k).getName().equals(res))
+							{
+								if (Board.getSpaces().get(k).getOwner().equals(this))
+								{
+									Board.getSpaces().get(k).removeHouse();
+								}
+							}
+						}
+					}
+					else if (end == 4)
+					{
+						System.out.println("Which property would you lke to mortgage?");
+						String res1 = in.next();
+						for (int k = 0; k < 40; k++)
+						{
+							if (Board.getSpaces().get(k).getName().equals(res1))
+							{
+								if (Board.getSpaces().get(k).getOwner().equals(this))
+								{
+									Board.getSpaces().get(k).mortgage();
+								}
+							}
+						}
+					}
+					else if (end == 5)
+					{
+						System.out.println("Which property would you lke to unmortgage?");
+						String res1 = in.next();
+						for (int k = 0; k < 40; k++)
+						{
+							if (Board.getSpaces().get(k).getName().equals(res1))
+							{
+								if (Board.getSpaces().get(k).getOwner().equals(this))
+								{
+									Board.getSpaces().get(k).unmortgage();
+								}
+							}
+						}
+					}
+					else {System.out.println("1 - End turn; 2 - Build houses; 3 - Sell houses; 4 - Mortgage; 5 - Unmortgage");}
+				}
 			}
 		}
 	}
@@ -163,6 +281,10 @@ public class Player {
 	    if (numGetOutCards < 2) {
 	      numGetOutCards++;
 	    }
+	}
+	public boolean getBankrupt()
+	{
+		return isBankrupt;
 	}
 	public int lastRoll() {return lastRoll;}
 	public void addRailroad() {railroadCount++;}

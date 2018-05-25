@@ -84,4 +84,6 @@ public class Railroad implements Space {
 			  owner.changeMoney(0 - (int) (mortgage * 1.1));
 		  }
 	  }
+	  public void addHouse() {}
+	  public void removeHouse() {}
 }

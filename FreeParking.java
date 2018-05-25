@@ -26,4 +26,8 @@ public class FreeParking implements Space {
 	{
 		money += in;
 	}
+	public void addHouse() {}
+	public void removeHouse() {}
+	public void mortgage() {}
+	public void unmortgage() {}
 }
