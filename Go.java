@@ -20,4 +20,5 @@ public class Go implements Space {
 	public void removeHouse() {}
 	public void mortgage() {}
 	public void unmortgage() {}
+	public void ownerNull() {}
 }

@@ -8,4 +8,5 @@ public interface Space {
 	void removeHouse();
 	void mortgage();
 	void unmortgage();
+	void ownerNull();
 }

@@ -38,6 +38,10 @@ public class Property implements Space{
 	{
 		return owner;
 	}
+	public void ownerNull()
+	{
+		owner = null;
+	}
 	public String getColor()
 	{
 		return color;

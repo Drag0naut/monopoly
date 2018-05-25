@@ -78,4 +78,5 @@ public class Utility implements Space{
 	}
 	public void addHouse() {}
 	public void removeHouse() {}
+	public void ownerNull() {}
 }

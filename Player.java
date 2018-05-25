@@ -121,7 +121,18 @@ public class Player {
 				while (!found)
 				{
 					int rec = in.nextInt();
-					if (rec == 1) {isBankrupt = true; found = true;}
+					if (rec == 1) 
+					{
+						isBankrupt = true;
+						found = true;
+						for (int l = 0; l < 40; l++)
+						{
+							if (Board.getSpaces().get(l).getOwner() != null && Board.getSpaces().get(l).getOwner().equals(this))
+							{
+								Board.getSpaces().get(l).ownerNull();
+							}
+						}
+					}
 					if (rec == 2)
 					{
 						found = true;
@@ -131,7 +142,7 @@ public class Player {
 						{
 							if (Board.getSpaces().get(k).getName().equals(res))
 							{
-								if (Board.getSpaces().get(k).getOwner().equals(this))
+								if (Board.getSpaces().get(k).getOwner() != null && Board.getSpaces().get(k).equals(this))
 								{
 									Board.getSpaces().get(k).removeHouse();
 								}
@@ -147,7 +158,7 @@ public class Player {
 						{
 							if (Board.getSpaces().get(k).getName().equals(res1))
 							{
-								if (Board.getSpaces().get(k).getOwner().equals(this))
+								if (Board.getSpaces().get(k).getOwner() != null && Board.getSpaces().get(k).getOwner().equals(this))
 								{
 									Board.getSpaces().get(k).mortgage();
 								}
@@ -179,7 +190,7 @@ public class Player {
 						{
 							if (Board.getSpaces().get(k).getName().equals(res))
 							{
-								if (Board.getSpaces().get(k).getOwner().equals(this))
+								if (Board.getSpaces().get(k).getOwner() != null && Board.getSpaces().get(k).getOwner().equals(this))
 								{
 									Board.getSpaces().get(k).addHouse();
 								}
@@ -194,7 +205,7 @@ public class Player {
 						{
 							if (Board.getSpaces().get(k).getName().equals(res))
 							{
-								if (Board.getSpaces().get(k).getOwner().equals(this))
+								if (Board.getSpaces().get(k).getOwner() != null && Board.getSpaces().get(k).getOwner().equals(this))
 								{
 									Board.getSpaces().get(k).removeHouse();
 								}
@@ -209,7 +220,7 @@ public class Player {
 						{
 							if (Board.getSpaces().get(k).getName().equals(res1))
 							{
-								if (Board.getSpaces().get(k).getOwner().equals(this))
+								if (Board.getSpaces().get(k).getOwner() != null && Board.getSpaces().get(k).getOwner().equals(this))
 								{
 									Board.getSpaces().get(k).mortgage();
 								}
@@ -224,7 +235,7 @@ public class Player {
 						{
 							if (Board.getSpaces().get(k).getName().equals(res1))
 							{
-								if (Board.getSpaces().get(k).getOwner().equals(this))
+								if (Board.getSpaces().get(k).getOwner() != null && Board.getSpaces().get(k).getOwner().equals(this))
 								{
 									Board.getSpaces().get(k).unmortgage();
 								}
