@@ -137,7 +137,8 @@ public class Player {
 					{
 						found = true;
 						System.out.println("Which property would you like to sell a house?");
-						String res = in.next();
+						Scanner jesushelpourgame = new Scanner(System.in);
+						String res = jesushelpourgame.nextLine();
 						for (int k = 0; k < 40; k++)
 						{
 							if (Board.getSpaces().get(k).getName().equals(res))
@@ -153,10 +154,11 @@ public class Player {
 					{
 						found = true;
 						System.out.println("Which property would you like to mortgage?");
-						String res1 = in.next();
+						Scanner jesushelpourgame = new Scanner(System.in);
+						String res = jesushelpourgame.nextLine();
 						for (int k = 0; k < 40; k++)
 						{
-							if (Board.getSpaces().get(k).getName().equals(res1))
+							if (Board.getSpaces().get(k).getName().equals(res))
 							{
 								if (Board.getSpaces().get(k).getOwner() != null && Board.getSpaces().get(k).getOwner().equals(this))
 								{
@@ -171,13 +173,14 @@ public class Player {
 		if (isBankrupt) {System.out.println(this.getName() + "is bankrupt!");}
 		else
 		{
-			System.out.println("Options: (1) End turn; (2) Build houses; (3) Sell houses; (4) Mortgage; (5) Unmortgage");
+			System.out.println("Options: (1) End turn; (2) Build houses; (3) Sell houses; (4) Mortgage; (5) Unmortgage; (6) Trade");
 			{
-				Scanner in = new Scanner(System.in);
 				boolean doneTurn = false;
 				while (!doneTurn)
 				{
-					int end = in.nextInt();
+					Scanner in = new Scanner(System.in);
+					int end = 0;
+					if (in.hasNextInt()) {end = in.nextInt();}
 					if (end == 1)
 					{
 						doneTurn = true;
@@ -185,7 +188,8 @@ public class Player {
 					else if (end == 2)
 					{
 						System.out.println("Which property would you like to add a house?");
-						String res = in.next();
+						Scanner jesushelpourgame = new Scanner(System.in);
+						String res = jesushelpourgame.nextLine();
 						for (int k = 0; k < 40; k++)
 						{
 							if (Board.getSpaces().get(k).getName().equals(res))
@@ -200,7 +204,8 @@ public class Player {
 					else if (end == 3)
 					{
 						System.out.println("Which property would you like to sell a house?");
-						String res = in.next();
+						Scanner jesushelpourgame = new Scanner(System.in);
+						String res = jesushelpourgame.nextLine();
 						for (int k = 0; k < 40; k++)
 						{
 							if (Board.getSpaces().get(k).getName().equals(res))
@@ -215,10 +220,11 @@ public class Player {
 					else if (end == 4)
 					{
 						System.out.println("Which property would you like to mortgage?");
-						String res1 = in.next();
+						Scanner jesushelpourgame = new Scanner(System.in);
+						String res = jesushelpourgame.nextLine();
 						for (int k = 0; k < 40; k++)
 						{
-							if (Board.getSpaces().get(k).getName().equals(res1))
+							if (Board.getSpaces().get(k).getName().equals(res))
 							{
 								if (Board.getSpaces().get(k).getOwner() != null && Board.getSpaces().get(k).getOwner().equals(this))
 								{
@@ -230,10 +236,11 @@ public class Player {
 					else if (end == 5)
 					{
 						System.out.println("Which property would you like to unmortgage?");
-						String res1 = in.next();
+						Scanner jesushelpourgame = new Scanner(System.in);
+						String res = jesushelpourgame.nextLine();
 						for (int k = 0; k < 40; k++)
 						{
-							if (Board.getSpaces().get(k).getName().equals(res1))
+							if (Board.getSpaces().get(k).getName().equals(res))
 							{
 								if (Board.getSpaces().get(k).getOwner() != null && Board.getSpaces().get(k).getOwner().equals(this))
 								{
@@ -242,7 +249,10 @@ public class Player {
 							}
 						}
 					}
-					else {System.out.println("Options: (1) End turn; (2) Build houses; (3) Sell houses; (4) Mortgage; (5) Unmortgage");}
+					if (end != 1)
+					{
+						System.out.println("Options: (1) End turn; (2) Build houses; (3) Sell houses; (4) Mortgage; (5) Unmortgage; (6) Trade");
+					}
 				}
 			}
 		}

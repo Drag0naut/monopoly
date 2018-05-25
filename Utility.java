@@ -25,12 +25,13 @@ public class Utility implements Space{
 	{
 		if (owner == null)
 		{
-			Scanner in = new Scanner(System.in);
 			System.out.println("Purchase property? Yes (1) or No (2)");
 			boolean found = false;
 			while (!found)
 			{
-				int ans = in.nextInt();
+				Scanner in = new Scanner(System.in);
+				int ans = 0;
+				if (in.hasNextInt()) {ans = in.nextInt();}
 				if (ans == 1)
 				{
 					owner = p;
