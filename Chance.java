@@ -65,11 +65,36 @@ public class Chance implements Space{
         if (ran == 4)
         {
         	System.out.println("Chance Card: Advance to the nearest Railroad and pay the owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.");
-            if (p.getPos() < 5) {p.moveTo(5); p.moveTo(5);}
-            else if (p.getPos() < 15) {p.moveTo(15); p.moveTo(15);}
-            else if (p.getPos() < 25) {p.moveTo(25); p.moveTo(25);}
-            else if (p.getPos() < 25) {p.moveTo(35); p.moveTo(35);}
-            else {p.moveTo(5); p.moveTo(5);}
+            if (p.getPos() < 5) 
+            {
+            	p.moveTo(5);
+            	Board.getSpaces().get(5).act(p);
+            	Board.getSpaces().get(5).act(p);
+            }
+            else if (p.getPos() < 15) 
+            {
+            	p.moveTo(15);
+            	Board.getSpaces().get(15).act(p);
+            	Board.getSpaces().get(15).act(p);
+            }
+            else if (p.getPos() < 25)
+            {
+            	p.moveTo(25);
+            	Board.getSpaces().get(25).act(p);
+            	Board.getSpaces().get(25).act(p);
+            }
+            else if (p.getPos() < 35) 
+            {
+            	p.moveTo(35);
+            	Board.getSpaces().get(35).act(p);
+            	Board.getSpaces().get(35).act(p);
+            }
+            else 
+            {
+            	p.moveTo(5);
+            	Board.getSpaces().get(5).act(p);
+            	Board.getSpaces().get(5).act(p);
+            }
         }
         if (ran == 5)
         {
