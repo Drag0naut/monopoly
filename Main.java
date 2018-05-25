@@ -8,10 +8,11 @@ public class Main {
         Scanner in = new Scanner(System.in);
         int numPlayers = 0;
         System.out.println("Welcome to Monopoly! How many players?");
-        numPlayers = in.nextInt();
+        String playernum = in.nextLine();
+        numPlayers = Integer.parseInt(playernum);
         for (int i = 1; i <= numPlayers; i++) {
              System.out.println("Input Player " + i + "\'s name:");
-             String temp = in.next();
+             String temp = in.nextLine();
              playerList.add(new Player(temp));
         }
         ArrayList<Space> spaces = new ArrayList<Space>();

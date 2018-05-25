@@ -261,7 +261,7 @@ public class Player {
 								String res = monopolyactuallysucks.nextLine();
 								for (Player k: Board.getPlayers())
 								{
-									if (k.getName().equals(res))
+									if (k.getName().equals(res) && !(res.equals(name)))
 									{
 										dic = k;
 										found = true;
