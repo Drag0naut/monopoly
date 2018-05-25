@@ -152,7 +152,7 @@ public class Player {
 					if (rec == 3)
 					{
 						found = true;
-						System.out.println("Which property would you lke to mortgage?");
+						System.out.println("Which property would you like to mortgage?");
 						String res1 = in.next();
 						for (int k = 0; k < 40; k++)
 						{
@@ -214,7 +214,7 @@ public class Player {
 					}
 					else if (end == 4)
 					{
-						System.out.println("Which property would you lke to mortgage?");
+						System.out.println("Which property would you like to mortgage?");
 						String res1 = in.next();
 						for (int k = 0; k < 40; k++)
 						{
@@ -229,7 +229,7 @@ public class Player {
 					}
 					else if (end == 5)
 					{
-						System.out.println("Which property would you lke to unmortgage?");
+						System.out.println("Which property would you like to unmortgage?");
 						String res1 = in.next();
 						for (int k = 0; k < 40; k++)
 						{
