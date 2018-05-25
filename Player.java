@@ -70,8 +70,8 @@ public class Player {
 						else if (ans == 2)
 						{
 							found = true;
-							int x = (int) Math.random() * 6 + 1;
-							int y = (int) Math.random() * 6 + 1;
+							int x = (int) (Math.random() * 6) + 1;
+							int y = (int) (Math.random() * 6) + 1;
 							if (x == y)
 							{
 								isInJail = false;
@@ -286,8 +286,8 @@ public class Player {
 	}
 	public int roll()
 	{
-		int i = (int) (Math.random() * 6 + 1);
-		int j = (int) (Math.random() * 6 + 1);
+		int i = (int) (Math.random() * 6) + 1;
+		int j = (int) (Math.random() * 6) + 1);
 		return i + j;
 	}
 	public void goToJail()
