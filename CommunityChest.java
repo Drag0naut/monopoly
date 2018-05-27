@@ -24,6 +24,7 @@ public class CommunityChest implements Space {
         {
         	System.out.println("Community Chest Card: Advance to Go (Collect $200).");
         	p.moveTo(0);
+        	p.changeMoney(200);
         }
         if (ran == 1)
         {

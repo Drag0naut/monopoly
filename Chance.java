@@ -24,25 +24,41 @@ public class Chance implements Space{
 			System.out.println("Chance Card: Advance to Go!");
             p.moveTo(0);
             Board.getSpaces().get(0).act(p);
+            p.changeMoney(200);
         }
         if (ran == 1)
         {
         	System.out.println("Chance Card: Advance to Illinois Ave.");
+        	int loc = p.getPos();
             p.moveTo(24);
+            if (loc > 24)
+            {
+            	p.changeMoney(200);
+            }
             Board.getSpaces().get(24).act(p);
         }
         if (ran == 2)
         {
         	System.out.println("Chance Card: Advance to St. Charles Place.");
+        	int loc = p.getPos();
             p.moveTo(11); 
+            if (loc > 11)
+            {
+            	p.changeMoney(200);
+            }
             Board.getSpaces().get(11).act(p);
         }
         if (ran == 3)
         {
         	System.out.println("Chance Card: Advance to the nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.");
-            if (p.getPos() < 12 || p.getPos() > 28)
+            int loc = p.getPos();
+        	if (p.getPos() < 12 || p.getPos() > 28)
             {
             	p.moveTo(12);
+            	if (loc > 28)
+            	{
+            		p.changeMoney(200);
+            	}
             	if (Board.getSpaces().get(12).getOwner() != null && Board.getSpaces().get(12).getOwner() != p)
             	{
             		int i = p.roll();
@@ -92,6 +108,7 @@ public class Chance implements Space{
             else 
             {
             	p.moveTo(5);
+            	p.changeMoney(200);
             	Board.getSpaces().get(5).act(p);
             	Board.getSpaces().get(5).act(p);
             }
@@ -132,13 +149,16 @@ public class Chance implements Space{
         if (ran == 11)
         {
         	System.out.println("Chance Card: Take a trip to Reading Railroad -- If you pass Go, collect $200.");
-        	if (p.getPos() > 5) {p.changeMoney(200);}
+        	int loc = p.getPos();
             p.moveTo(5);
+            if (loc > 5) {p.changeMoney(200);}
+            Board.getSpaces().get(5).act(p);
         }
         if (ran == 12)
         {
         	System.out.println("Chance Card: Advance to Boardwalk.");
             p.moveTo(39);
+            Board.getSpaces().get(39).act(p);
         }
         if (ran == 13)
         {
