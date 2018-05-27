@@ -2,4 +2,4 @@
 its monopoly
 
 
-monopoly is pretty damn hard
+(run MAIN.JAVA to test)
