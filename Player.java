@@ -14,6 +14,7 @@ public class Player {
 	private int hotels;
 	private boolean isBankrupt;
 	private ArrayList<String> properties;
+	boolean done = false;
 	public Player(String n)
 	{
 		name = n;
@@ -47,7 +48,7 @@ public class Player {
 	{
 		System.out.println(this.getName() + "'s turn!");
 		int doubCt = 0;
-		boolean done = false;
+		done = false;
 		while (!done && !isBankrupt)
 		{
 			if (isInJail)
@@ -301,6 +302,8 @@ public class Player {
 	{
 		isInJail = true;
 		moveTo(10);
+		System.out.println(this.getName() + " is now jailed!");
+		done = true;
 		jailTurns = 0;
 	}
 	
